@@ -7,7 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- STYLE เดิม (GitHub Theme) --- */
+        /* --- STYLE: GitHub Theme --- */
         :root {
             --primary: #1a2a6c;
             --accent: #fdbb2d;
@@ -144,10 +144,10 @@
     </footer>
 
     <script>
-        // --- ⚙️ ตั้งค่า GitHub ของเราตรงนี้ครับ ⚙️ ---
-        const GITHUB_USERNAME = "ชื่อยูสเซอร์เนมGithub";  // เช่น "rafikee123"
-        const REPO_NAME = "ชื่อโปรเจกต์";           // เช่น "my-portfolio"
-        const FOLDER_PATH = "docs";                // ชื่อโฟลเดอร์ที่เก็บไฟล์
+        // --- ⚙️ ตั้งค่า GitHub ให้ตรงกับของกีแล้วครับ ✅ ---
+        const GITHUB_USERNAME = "KeeXLab-TH"; 
+        const REPO_NAME = "KeeXLab-TH.github.io";
+        const FOLDER_PATH = "docs"; 
         // ------------------------------------------
 
         async function fetchDocs() {
@@ -166,8 +166,8 @@
 
                 // วนลูปสร้างรายการไฟล์
                 data.forEach(file => {
-                    // ไม่แสดงไฟล์ index หรือ readme ซ้ำ
-                    if(file.name === 'index.html' || file.name === 'README.md') return;
+                    // ไม่แสดงไฟล์ index หรือ readme ซ้ำ หรือไฟล์ระบบ
+                    if(file.name === 'index.html' || file.name === 'README.md' || file.name.startsWith('.')) return;
 
                     // เลือกไอคอนตามนามสกุล
                     let iconClass = 'far fa-file';
@@ -176,9 +176,10 @@
 
                     if(['pdf'].includes(ext)) { iconClass = 'far fa-file-pdf'; color = '#e74c3c'; }
                     else if(['doc','docx'].includes(ext)) { iconClass = 'far fa-file-word'; color = '#2b579a'; }
-                    else if(['zip','rar'].includes(ext)) { iconClass = 'far fa-file-archive'; color = '#f39c12'; }
-                    else if(['jpg','png','jpeg'].includes(ext)) { iconClass = 'far fa-image'; color = '#27ae60'; }
+                    else if(['zip','rar','7z'].includes(ext)) { iconClass = 'far fa-file-archive'; color = '#f39c12'; }
+                    else if(['jpg','png','jpeg','gif'].includes(ext)) { iconClass = 'far fa-image'; color = '#27ae60'; }
                     else if(['ppt','pptx'].includes(ext)) { iconClass = 'far fa-file-powerpoint'; color = '#c0392b'; }
+                    else if(['xls','xlsx'].includes(ext)) { iconClass = 'far fa-file-excel'; color = '#217346'; }
 
                     // คำนวณขนาดไฟล์ (KB/MB)
                     let sizeStr = '';
@@ -187,7 +188,6 @@
                     else sizeStr = (file.size/1048576).toFixed(1) + ' MB';
 
                     // สร้าง HTML Link
-                    // ใช้ file.download_url เพื่อให้โหลดไฟล์ตรงๆ หรือเปิดดูไฟล์นั้น
                     const html = `
                         <a href="${file.download_url}" class="file-row" target="_blank">
                             <div class="icon-col"><i class="${iconClass}" style="color:${color}"></i></div>
@@ -207,7 +207,7 @@
                 container.innerHTML = `
                     <div style="padding:20px; text-align:center; color:red;">
                         <i class="fas fa-exclamation-circle"></i> โหลดข้อมูลไม่สำเร็จ<br>
-                        <small>กรุณาตรวจสอบชื่อ GitHub / Repo หรือตั้งค่า Repo เป็น Public</small>
+                        <small>กรุณาตรวจสอบว่าใน GitHub มีไฟล์ในโฟลเดอร์ docs แล้วหรือยัง</small>
                     </div>
                 `;
             }
@@ -218,12 +218,18 @@
 
         function toggleMenu() {
             const menu = document.getElementById("navMenu");
-            if(menu.style.display === "flex") menu.style.display = "none";
-            else {
+            if(menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
                 menu.style.display = "flex";
                 menu.style.flexDirection = "column";
                 menu.style.position = "absolute";
-                menu.style.top = "70px"; left: 0; width: "100%"; background: "#1a2a6c"; padding: "20px"; zIndex: "999";
+                menu.style.top = "70px";
+                menu.style.left = "0";
+                menu.style.width = "100%";
+                menu.style.background = "#1a2a6c";
+                menu.style.padding = "20px";
+                menu.style.zIndex = "999";
             }
         }
     </script>
