@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อเรา | Thanapoom Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- COPY STYLE MAIN --- */
+        :root {
+            --primary: #1a2a6c;
+            --accent: #fdbb2d;
+            --dark: #121212;
+            --light: #f4f4f4;
+            --fb-color: #1877F2;
+            --tiktok-color: #000000;
+            --phone-color: #28a745;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background: #f8f9fa; color: var(--dark); line-height: 1.6; }
+
+        /* --- NAV BAR --- */
+        nav { background: var(--primary); padding: 1rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; color: var(--accent); text-decoration: none; }
+        .nav-menu { display: flex; gap: 30px; list-style: none; }
+        .nav-link { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; transition: 0.3s; position: relative; }
+        .nav-link:hover, .nav-link.active { color: var(--accent); }
+        .nav-link.active::after { width: 100%; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent); transition: width 0.3s; }
+        .hamburger { display: none; color: white; font-size: 1.8rem; cursor: pointer; }
+        .special-badge { background: rgba(255, 255, 255, 0.1); color: #ffcf5c; padding: 8px 20px; border-radius: 50px; border: 1px solid rgba(255, 207, 92, 0.5); font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .desktop-only { display: flex; }
+        .mobile-only { display: none !important; }
+
+        /* --- CONTACT PAGE STYLES (UPDATED) --- */
+        .contact-header {
+            background: linear-gradient(135deg, var(--primary), #2a408c);
+            color: white;
+            padding: 80px 20px 100px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+        
+        .profile-avatar {
+            width: 120px; height: 120px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            padding: 5px;
+            box-shadow: 0 0 20px rgba(253, 187, 45, 0.5);
+            display: flex; justify-content: center; align-items: center;
+            font-size: 3rem; color: var(--primary);
+        }
+
+        .container { max-width: 1000px; margin: -60px auto 50px; padding: 0 20px; position: relative; z-index: 10; }
+        
+        /* 🔥 แก้ไขจุดที่ 1: เปลี่ยน Grid เป็น Flexbox เพื่อจัดกึ่งกลาง */
+        .contact-grid {
+            display: flex;             /* ใช้ Flexbox แทน Grid */
+            flex-wrap: wrap;           /* อนุญาตให้ปัดตกบรรทัดใหม่ */
+            justify-content: center;   /* จัดกึ่งกลางแนวนอน (สำคัญมาก!) */
+            gap: 25px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            /* 🔥 แก้ไขจุดที่ 2: กำหนดขนาดให้เท่าๆ กัน */
+            flex: 1 1 280px;           /* ยืดหดได้ แต่ขนาดพื้นฐานคือ 280px */
+            max-width: 320px;          /* ไม่ให้กว้างเกินไปเวลาอยู่เดี่ยวๆ */
+        }
+
+        .contact-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+
+        .icon-box {
+            width: 70px; height: 70px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+            transition: 0.4s;
+        }
+
+        .card-phone .icon-box { background: var(--phone-color); box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3); }
+        .card-fb .icon-box { background: var(--fb-color); box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3); }
+        .card-tiktok .icon-box { background: linear-gradient(45deg, #000, #333); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+        .card-map .icon-box { background: var(--accent); color: var(--primary); box-shadow: 0 5px 15px rgba(253, 187, 45, 0.3); }
+
+        .card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; }
+        .card-desc { font-size: 0.95rem; color: #666; margin-bottom: 15px; }
+        
+        .btn-action {
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            background: #f0f2f5;
+            color: #333;
+            transition: 0.3s;
+        }
+        .contact-card:hover .btn-action { background: var(--primary); color: white; }
+
+        /* MAP SECTION */
+        .map-section {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-top: 40px;
+            text-align: center;
+        }
+        .map-frame {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 15px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hamburger { display: block; }
+            .desktop-only { display: none; }
+            .container { margin-top: -40px; }
+        }
+
+        footer { background: var(--primary); color: white; text-align: center; padding: 40px 20px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">THANAPOOM<span style="color:white">.P</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">หน้าหลัก</a></li>
+                <li><a href="works.html" class="nav-link">ผลงาน</a></li>
+                <li><a href="education.html" class="nav-link">ประวัติการศึกษา</a></li>
+                <li><a href="docs.html" class="nav-link">เอกสาร</a></li>
+                <li><a href="contact.html" class="nav-link active">ติดต่อ</a></li>
+            </ul>
+            <div class="special-badge desktop-only">
+                <i class="fas fa-bolt"></i> Mechatronics Specialist
+            </div>
+            <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <header class="contact-header">
+        <div class="profile-avatar">
+            <i class="fas fa-user-astronaut"></i>
+        </div>
+        <h1 style="margin-bottom: 10px;">ธนภูมิ แดงประดับ (รอฟีกี)</h1>
+        <p style="opacity: 0.9; font-size: 1.1rem;">Mechatronics & Robotics Enthusiast</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="contact-grid">
+            
+            <a href="tel:0924569403" class="contact-card card-phone">
+                <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
+                <div class="card-title">เบอร์โทรศัพท์</div>
+                <div class="card-desc">092-456-9403</div>
+                <span class="btn-action">กดเพื่อโทรออก</span>
+            </a>
+
+            <a href="https://www.facebook.com/KeeXLabTH" target="_blank" class="contact-card card-fb">
+                <div class="icon-box"><i class="fab fa-facebook-f"></i></div>
+                <div class="card-title">Facebook</div>
+                <div class="card-desc">Thanapoom (KeeXLabTH)</div>
+                <span class="btn-action">ไปที่หน้าเฟสบุ๊ค</span>
+            </a>
+
+            <a href="https://www.tiktok.com/@naaythnphummiae" target="_blank" class="contact-card card-tiktok">
+                <div class="icon-box"><i class="fab fa-tiktok"></i></div>
+                <div class="card-title">TikTok</div>
+                <div class="card-desc">@naaythnphummiae</div>
+                <span class="btn-action">ดูคลิป TikTok</span>
+            </a>
+
+            <div class="contact-card card-map">
+                <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="card-title">ที่อยู่ / สถาบัน</div>
+                <div class="card-desc">วิทยาลัยการอาชีพบางปะกง<br>จ.ฉะเชิงเทรา</div>
+                <span class="btn-action" style="background:var(--primary); color:white;">ดูแผนที่ด้านล่าง</span>
+            </div>
+            
+        </div>
+
+        <div class="map-section">
+            <h3 style="margin-bottom: 20px; color: var(--primary);">📍 พิกัด: วิทยาลัยการอาชีพบางปะกง</h3>
+            <p style="margin-bottom: 20px; color: #666;">
+                เลขที่ 41 หมู่ 3 ถนน ถ. กรุงเทพ - ชลบุรี สายใหม่ <br>
+                ตำบล บางสมัคร อำเภอบางปะกง ฉะเชิงเทรา 24130
+            </p>
+            <iframe class="map-frame" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3878.502283309543!2d100.9388883148281!3d13.56598599046755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d431c0e3a6a9b%3A0x6c2f0f8a9a0f0f0!2z4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4LiB4Liy4Lij4Lit4Liy4LiK4Li14Lie4Lia4Liy4LiH4Lib4Liw4LiB4LiH!5e0!3m2!1sth!2sth!4v1645000000000!5m2!1sth!2sth" 
+                allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2025 Thanapoom Daengpradub (Rafikee)</p>
+        <p>Mechatronics Specialist | Bangpakong Industrial and Community Education College</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("navMenu");
+            if(menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+                menu.style.flexDirection = "column";
+                menu.style.position = "absolute";
+                menu.style.top = "70px";
+                menu.style.left = "0";
+                menu.style.width = "100%";
+                menu.style.background = "#1a2a6c";
+                menu.style.padding = "20px";
+                menu.style.zIndex = "999";
+            }
+        }
+    </script>
+</body>
+</html>

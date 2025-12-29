@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประวัติการศึกษา | Thanapoom Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- COPY STYLE หลักจากหน้า INDEX มาใช้ได้เลย (ส่วนนี้คือพื้นฐาน) --- */
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #b21f1f;
+            --accent: #fdbb2d;
+            --dark: #121212;
+            --light: #f4f4f4;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background: var(--light); color: var(--dark); line-height: 1.6; }
+        
+        /* --- NAVIGATION BAR --- */
+        nav { background: var(--primary); padding: 1rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .nav-container { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; color: var(--accent); text-decoration: none; }
+        
+        .nav-menu { display: flex; gap: 30px; list-style: none; }
+        .nav-link { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; transition: 0.3s; position: relative; }
+        .nav-link:hover, .nav-link.active { color: var(--accent); }
+        .nav-link.active::after { width: 100%; } /* ขีดเส้นใต้เมนูที่เลือกอยู่ */
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent); transition: width 0.3s; }
+
+        /* Hamburger Menu (Mobile) */
+        .hamburger { display: none; color: white; font-size: 1.8rem; cursor: pointer; }
+        
+        /* Badge & Special UI */
+        .special-badge {
+            background: rgba(255, 255, 255, 0.1); color: #ffcf5c; padding: 8px 20px;
+            border-radius: 50px; border: 1px solid rgba(255, 207, 92, 0.5);
+            font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; gap: 8px;
+        }
+        .mobile-only { display: none !important; }
+
+        /* --- TIMELINE SPECIFIC STYLES (ส่วนพิเศษสำหรับหน้านี้) --- */
+        .page-header {
+            background: var(--primary);
+            color: white;
+            padding: 60px 20px 80px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-section { max-width: 900px; margin: 0 auto 80px; padding: 20px; position: relative; }
+        
+        /* เส้นแกนกลาง */
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; left: 50px; /* สำหรับมือถือ */
+            width: 4px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            display: flex;
+            align-items: flex-start;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.6s forwards;
+        }
+        
+        /* วงกลมไอคอน (สวยๆ) */
+        .circle-icon {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: 50%;
+            border: 5px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            box-shadow: 0 0 20px rgba(253, 187, 45, 0.4);
+            position: relative;
+            z-index: 2;
+            transition: 0.4s;
+        }
+        
+        .timeline-item:hover .circle-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: var(--accent);
+            color: white;
+            border-color: white;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-left: 30px;
+            width: 100%;
+            border-left: 5px solid var(--primary);
+            transition: 0.3s;
+        }
+        
+        .timeline-item:hover .content-box {
+            transform: translateX(10px);
+            border-left-color: var(--accent);
+        }
+
+        .year-label {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .school-name { font-size: 1.4rem; font-weight: bold; color: #333; margin-bottom: 5px; }
+        .major-name { font-size: 1.1rem; color: #666; font-weight: 500; }
+        .status { color: var(--secondary); font-weight: bold; font-size: 0.9rem; margin-top: 10px; display: block;}
+
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* Responsive */
+        @media (min-width: 769px) {
+            .timeline-section::before { left: 50%; transform: translateX(-50%); }
+            .timeline-item { width: 50%; margin-left: auto; padding-left: 50px; }
+            .timeline-item:nth-child(odd) { margin-left: 0; margin-right: auto; flex-direction: row-reverse; padding-left: 0; padding-right: 50px; text-align: right; }
+            
+            .content-box { margin-left: 0; }
+            .timeline-item:nth-child(odd) .content-box { margin-right: 30px; border-left: none; border-right: 5px solid var(--primary); }
+            .timeline-item:nth-child(odd):hover .content-box { transform: translateX(-10px); border-right-color: var(--accent); }
+            
+            .circle-icon { position: absolute; left: -50px; top: 0; } /* จัดกึ่งกลาง */
+            .timeline-item:nth-child(odd) .circle-icon { right: -50px; left: auto; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; /* Mobile Menu logic same as Index */ }
+            .hamburger { display: block; }
+            .desktop-only { display: none; }
+            .timeline-item { flex-direction: row; }
+        }
+
+        footer { background: var(--primary); color: white; text-align: center; padding: 40px 20px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">THANAPOOM<span style="color:white">.P</span></a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> หน้าหลัก</a></li>
+                <li><a href="works.html" class="nav-link">ผลงาน</a></li>
+                <li><a href="education.html" class="nav-link active">ประวัติการศึกษา</a></li>
+                <li><a href="docs.html" class="nav-link">เอกสาร</a></li>
+                <li><a href="contact.html" class="nav-link">ติดต่อ</a></li>
+            </ul>
+
+            <div class="special-badge desktop-only">
+                <i class="fas fa-bolt"></i> Mechatronics Specialist
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 style="font-size: 2.5rem; color: var(--accent);">เส้นทางการศึกษา</h1>
+        <p style="opacity: 0.9;">Educational Journey & Milestones</p>
+    </header>
+
+    <section class="timeline-section">
+        
+        <div class="timeline-item" style="animation-delay: 0.1s;">
+            <div class="circle-icon">
+                <i class="fas fa-robot"></i> </div>
+            <div class="content-box">
+                <span class="year-label">2568 - ปัจจุบัน</span>
+                <div class="school-name">วิทยาลัยการอาชีพบางปะกง</div>
+                <div class="major-name">ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</div>
+                <p style="color: #444; margin-top: 5px;">แผนกวิชาเมคคาทรอนิกส์และหุ่นยนต์</p>
+                <span class="status"><i class="fas fa-circle-notch fa-spin"></i> กำลังศึกษาอยู่</span>
+            </div>
+        </div>
+
+        <div class="timeline-item" style="animation-delay: 0.3s;">
+            <div class="circle-icon">
+                <i class="fas fa-tools"></i> </div>
+            <div class="content-box">
+                <span class="year-label">2565 - 2567</span>
+                <div class="school-name">วิทยาลัยการอาชีพบางปะกง</div>
+                <div class="major-name">ประกาศนียบัตรวิชาชีพ (ปวช.)</div>
+                <p style="color: #444; margin-top: 5px;">แผนกวิชาเมคคาทรอนิกส์</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" style="animation-delay: 0.5s;">
+            <div class="circle-icon">
+                <i class="fas fa-user-graduate"></i> </div>
+            <div class="content-box">
+                <span class="year-label">2562 - 2565</span>
+                <div class="school-name">โรงเรียนสุเหร่าคลองใหญ่</div>
+                <div class="major-name">(อนุกูลศึกษา)</div>
+                <p style="color: #444; margin-top: 5px;">ระดับมัธยมศึกษาตอนต้น</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" style="animation-delay: 0.7s;">
+            <div class="circle-icon">
+                <i class="fas fa-book-open"></i> </div>
+            <div class="content-box">
+                <span class="year-label">2556 - 2561</span>
+                <div class="school-name">โรงเรียนสุเหร่าจรเข้น้อย</div>
+                <div class="major-name">ระดับประถมศึกษา</div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2025 Thanapoom Daengpradub</p>
+        <p>Mechatronics Specialist</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("navMenu");
+            if(menu.style.display === "flex") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "flex";
+                menu.style.flexDirection = "column";
+                menu.style.position = "absolute";
+                menu.style.top = "70px";
+                menu.style.left = "0";
+                menu.style.width = "100%";
+                menu.style.background = "#1a2a6c";
+                menu.style.padding = "20px";
+                menu.style.zIndex = "999";
+            }
+        }
+    </script>
+</body>
+</html>
