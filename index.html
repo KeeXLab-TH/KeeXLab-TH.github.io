@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanaphum Portfolio | Mechatronics Expert</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1a2a6c;
@@ -25,9 +26,21 @@
         /* Hero Section */
         .hero { 
             background: linear-gradient(rgba(26, 42, 108, 0.9), rgba(26, 42, 108, 0.9)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=80');
-            background-size: cover; background-attachment: fixed; height: 60vh; color: white;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;
+            background-size: cover; background-attachment: fixed; min-height: 70vh; color: white;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px;
         }
+        
+        /* สไตล์รูปโปรไฟล์ */
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
         .hero h1 { font-size: 3rem; margin-bottom: 10px; color: var(--accent); }
         .hero p { font-size: 1.2rem; max-width: 700px; }
 
@@ -40,14 +53,15 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         
         /* Card Style */
-        .card { background: white; padding: 25px; border-radius: 15px; shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-bottom: 4px solid var(--primary); }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-bottom: 4px solid var(--primary); }
         .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
         .badge { background: var(--accent); color: var(--dark); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .profile-img { width: 150px; height: 150px; }
             .grid { grid-template-columns: 1fr; }
         }
 
@@ -64,6 +78,8 @@
     </nav>
 
     <header class="hero">
+        <img src="profile.jpg" alt="ธนภูมิ แดงประดับ" class="profile-img">
+        
         <h1>ธนภูมิ แดงประดับ</h1>
         <p>รองชนะเลิศอันดับ 1 การแข่งขันทักษะระดับชาติ ครั้งที่ 33 และนวัตกรระดับ 5 ดาว</p>
     </header>
@@ -75,13 +91,13 @@
                 <i class="fas fa-trophy"></i>
                 <h3>รองชนะเลิศอันดับ 1 ประเทศไทย</h3>
                 <p>ทักษะการโปรแกรมควบคุมระบบอัตโนมัติ (สาธิต) ปีการศึกษา 2568 ณ จังหวัดตรัง</p>
-                <p><span class="badge">คะแนนปฏิบัติ 100 เต็ม</span></p>
+                <p style="margin-top:10px;"><span class="badge">คะแนนปฏิบัติ 100 เต็ม</span></p>
             </div>
             <div class="card">
                 <i class="fas fa-star"></i>
                 <h3>นวัตกรรมระดับ 5 ดาว</h3>
                 <p>ผลงาน AI-IIoT จากกิจกรรม TVET Smart Idea2Innovation โดย วช.</p>
-                <p><span class="badge">Top Innovation</span></p>
+                <p style="margin-top:10px;"><span class="badge">Top Innovation</span></p>
             </div>
             <div class="card">
                 <i class="fas fa-microchip"></i>
