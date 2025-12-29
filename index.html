@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanaphum Portfolio | Mechatronics Expert</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2a6c;
+            --secondary: #b21f1f;
+            --accent: #fdbb2d;
+            --dark: #121212;
+            --light: #f4f4f4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        body { background: var(--light); color: var(--dark); line-height: 1.6; }
+
+        /* Header & Nav */
+        nav { background: var(--primary); color: white; padding: 1rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .nav-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; }
+
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(26, 42, 108, 0.9), rgba(26, 42, 108, 0.9)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=80');
+            background-size: cover; background-attachment: fixed; height: 60vh; color: white;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; color: var(--accent); }
+        .hero p { font-size: 1.2rem; max-width: 700px; }
+
+        /* Main Content */
+        section { max-width: 1100px; margin: 40px auto; padding: 20px; }
+        .section-title { text-align: center; margin-bottom: 40px; position: relative; padding-bottom: 10px; }
+        .section-title::after { content: ''; width: 50px; height: 3px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        /* Grid System */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        
+        /* Card Style */
+        .card { background: white; padding: 25px; border-radius: 15px; shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-bottom: 4px solid var(--primary); }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+        .badge { background: var(--accent); color: var(--dark); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        footer { background: var(--dark); color: white; text-align: center; padding: 40px 20px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">THANAPHUM.P</div>
+            <div>Mechatronics Specialist</div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>ธนภูมิ แดงประดับ</h1>
+        <p>รองชนะเลิศอันดับ 1 การแข่งขันทักษะระดับชาติ ครั้งที่ 33 และนวัตกรระดับ 5 ดาว</p>
+    </header>
+
+    <section id="achievements">
+        <h2 class="section-title">เกียรติประวัติระดับชาติ</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-trophy"></i>
+                <h3>รองชนะเลิศอันดับ 1 ประเทศไทย</h3>
+                <p>ทักษะการโปรแกรมควบคุมระบบอัตโนมัติ (สาธิต) ปีการศึกษา 2568 ณ จังหวัดตรัง</p>
+                <p><span class="badge">คะแนนปฏิบัติ 100 เต็ม</span></p>
+            </div>
+            <div class="card">
+                <i class="fas fa-star"></i>
+                <h3>นวัตกรรมระดับ 5 ดาว</h3>
+                <p>ผลงาน AI-IIoT จากกิจกรรม TVET Smart Idea2Innovation โดย วช.</p>
+                <p><span class="badge">Top Innovation</span></p>
+            </div>
+            <div class="card">
+                <i class="fas fa-microchip"></i>
+                <h3>TIA 25 Finalist</h3>
+                <p>ผู้เข้ารอบสุดท้าย Thailand Innovation Awards ครั้งที่ 25 สาขาเทคโนโลยีปัญญาประดิษฐ์</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">ความเชี่ยวชาญ</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Industrial Programming</h3>
+                <p>Structured Text, Standard Function Block, Ladder Diagram (PLC Allen-Bradley & Mitsubishi)</p>
+            </div>
+            <div class="card">
+                <h3>Advanced Tech</h3>
+                <p>AI Machine Learning, IIoT Systems, Ubuntu OS, Home Assistant (HA OS)</p>
+            </div>
+            <div class="card">
+                <h3>Mechatronics Design</h3>
+                <p>การออกแบบระบบคัดแยกชิ้นงานอัตโนมัติ และระบบ Smart Monitoring</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Thanaphum Daengpradap - วิทยาลัยการอาชีพบางปะกง</p>
+        <p style="margin-top: 10px; color: var(--accent);">"ความรู้และประสบการณ์ คือความสำเร็จที่แท้จริง"</p>
+    </footer>
+
+</body>
+</html>
