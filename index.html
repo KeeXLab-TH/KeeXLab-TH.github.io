@@ -269,17 +269,193 @@
             .card, .skill-card { max-width: 100%; }
         }
 
+        /* --- สไตล์ป้ายไฟ Mechatronics Specialist (Special Badge) --- */
+.special-badge {
+    background: rgba(255, 255, 255, 0.1); /* พื้นหลังโปร่งใส */
+    color: #ffcf5c; /* สีทอง */
+    padding: 8px 20px;
+    border-radius: 50px; /* ทรงแคปซูล */
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid rgba(255, 207, 92, 0.5); /* ขอบทองจางๆ */
+    box-shadow: 0 0 10px rgba(255, 207, 92, 0.2); /* แสงฟุ้งๆ */
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* ระยะห่างไอคอนกับตัวหนังสือ */
+    transition: all 0.3s ease;
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ไปชี้ */
+.special-badge:hover {
+    background: rgba(255, 207, 92, 0.2);
+    box-shadow: 0 0 20px rgba(255, 207, 92, 0.6); /* เรืองแสงวาบ */
+    transform: scale(1.05); /* ขยายใหญ่นิดนึง */
+    color: #ffffff; /* เปลี่ยนตัวหนังสือเป็นสีขาว */
+    border-color: #ffcf5c;
+}
+
+/* ทำให้ไอคอนขยับดุ๊กดิ๊กได้ตอนชี้ */
+.special-badge:hover i {
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+
+/* --- Navigation Bar Styles (Updated) --- */
+
+/* จัดระเบียบกล่อง Nav */
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* สำคัญสำหรับ Dropdown */
+}
+
+/* ลิงก์เมนู (Desktop) */
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* เอฟเฟกต์ขีดเส้นใต้ตอนชี้เมาส์ */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--accent);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ปุ่ม Hamburger (ซ่อนใน PC) */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.hamburger:hover { color: var(--accent); }
+
+/* ตัวช่วยซ่อน/แสดง ตามขนาดจอ */
+.mobile-only { display: none !important; }
+
+/* --- Mobile Responsive (หน้าจอมือถือ) --- */
+@media (max-width: 768px) {
+    
+    /* ซ่อนป้ายไฟอันใหญ่ใน PC เพื่อประหยัดที่ */
+    .desktop-only { display: none !important; }
+    
+    /* โชว์ปุ่มเมนู */
+    .hamburger { display: block; }
+
+    /* จัดสไตล์เมนู Dropdown */
+    .nav-menu {
+        position: absolute;
+        top: 100%; /* อยู่ใต้แถบเมนูพอดี */
+        left: 0;
+        width: 100%;
+        background: rgba(26, 42, 108, 0.95); /* สีน้ำเงินโปร่งแสงนิดๆ */
+        backdrop-filter: blur(10px); /* เบลอฉากหลัง */
+        flex-direction: column; /* เรียงลงล่าง */
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        
+        /* ซ่อนไว้ก่อน */
+        opacity: 0;
+        transform: translateY(-20px);
+        pointer-events: none; /* ห้ามคลิกตอนซ่อน */
+        transition: all 0.4s ease;
+        z-index: -1; /* ซ่อนไปข้างหลังก่อน */
+    }
+
+    /* คลาสสำหรับเปิดเมนู (JavaScript จะเติมคลาสนี้) */
+    .nav-menu.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+        z-index: 1000;
+    }
+
+    .nav-link { font-size: 1.2rem; }
+    
+    /* เอาป้ายไฟมาโชว์ในเมนูมือถือแทน */
+    .mobile-only { 
+        display: flex !important; 
+        margin-top: 15px;
+    }
+}
+
+
         footer { background: var(--primary); color: white; text-align: center; padding: 50px 20px; margin-top: 80px; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <div class="logo">THANAPOOM<span style="color:white">.P</span></div>
-            <div style="font-weight: 300; font-size: 0.9rem;">Mechatronics Specialist</div>
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            THANAPOOM<span style="color:white">.P</span>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="works.html" class="nav-link">ผลงาน</a></li>
+            <li><a href="education.html" class="nav-link">ประวัติการศึกษา</a></li>
+            <li><a href="docs.html" class="nav-link">เอกสาร</a></li>
+            <li><a href="contact.html" class="nav-link">ติดต่อ</a></li>
+            
+            <div class="mobile-badge-container">
+                <div class="special-badge mobile-only">
+                    <i class="fas fa-bolt"></i> Mechatronics
+                </div>
+            </div>
+        </ul>
+
+        <div class="special-badge desktop-only">
+            <i class="fas fa-bolt"></i> Mechatronics Specialist
         </div>
-    </nav>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
 
     <header class="hero">
         <img src="profile.jpg" alt="ธนภูมิ แดงประดับ" class="profile-img">
@@ -470,6 +646,35 @@
             }
         }
     </script>
+<script>
+        // ฟังก์ชันเปิด/ปิด เมนูมือถือ
+        function toggleMenu() {
+            const menu = document.getElementById("navMenu");
+            const icon = document.querySelector(".hamburger i");
+            
+            // สลับคลาส active
+            menu.classList.toggle("active");
 
+            // เปลี่ยนไอคอน (ถ้าเปิดเป็นกากบาท X, ถ้าปิดเป็น 3 ขีด)
+            if (menu.classList.contains("active")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+            } else {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            }
+        }
+
+        // เสริม: คลิกที่ลิ้งค์แล้วให้เมนูหุบเองอัตโนมัติ
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById("navMenu");
+                const icon = document.querySelector(".hamburger i");
+                menu.classList.remove("active");
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            });
+        });
+    </script>
 </body>
 </html>
