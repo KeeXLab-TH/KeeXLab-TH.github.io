@@ -29,7 +29,7 @@
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
-
+        
         /* Header & Nav */
         nav { background: var(--primary); color: white; padding: 1rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
         .nav-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
@@ -39,44 +39,39 @@
         .hero { 
             background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(26, 42, 108, 0.85)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=80');
             background-size: cover; background-attachment: fixed; background-position: center;
-            min-height: 85vh; /* สูงเกือบเต็มจอ */
+            min-height: 85vh;
             color: white;
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px;
         }
         
-        /* สไตล์รูปโปรไฟล์แบบใหม่ */
         .profile-img {
-            width: 260px; /* ขยายใหญ่สะใจ */
+            width: 260px;
             height: 260px;
             border-radius: 50%;
             object-fit: cover;
-            border: 6px solid var(--accent); /* ขอบทองหนาขึ้น */
+            border: 6px solid var(--accent);
             margin-bottom: 30px;
-            box-shadow: 0 0 30px rgba(253, 187, 45, 0.6); /* แสงออร่าสีทอง */
-            animation: zoomIn 1.5s ease-out; /* เอฟเฟกต์รูปเด้งขยาย */
+            box-shadow: 0 0 30px rgba(253, 187, 45, 0.6);
+            animation: zoomIn 1.5s ease-out;
         }
 
-        .hero-content {
-            animation: fadeInUp 2s ease-out; /* เอฟเฟกต์ตัวหนังสือลอยขึ้น */
-        }
-
-        .hero h1 { 
-            font-size: 3.5rem; 
-            margin-bottom: 15px; 
-            color: var(--accent); 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
+        .hero-content { animation: fadeInUp 2s ease-out; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; color: var(--accent); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.3rem; max-width: 800px; opacity: 0.9; }
 
         /* Main Content */
-        section { max-width: 1100px; margin: 60px auto; padding: 20px; }
+        section { max-width: 1200px; margin: 60px auto; padding: 20px; }
         .section-title { text-align: center; margin-bottom: 50px; position: relative; padding-bottom: 15px; font-size: 2rem; font-weight: bold; color: var(--primary); }
         .section-title::after { content: ''; width: 80px; height: 4px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px; }
 
-        /* Grid System */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* --- Grid System (สำหรับ Achievements) --- */
+        .grid { 
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
         
-        /* Card Style */
         .card { 
             background: white; 
             padding: 30px; 
@@ -86,28 +81,192 @@
             border-bottom: 5px solid var(--primary); 
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 320px;
+            max-width: 380px;
+            width: 100%; 
         }
+
         .card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(26, 42, 108, 0.2); border-bottom-color: var(--accent); }
-        .card i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; transition: 0.3s; }
-        .card:hover i { color: var(--accent); transform: scale(1.1); }
-        .card h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--dark); }
         
+        /* สไตล์ไอคอนในการ์ด */
+        .card i { 
+            font-size: 3rem; 
+            color: var(--primary); 
+            margin-bottom: 15px; /* ลดระยะห่างลงนิดหน่อย */
+            transition: 0.3s; 
+            align-self: flex-start; /* จัดชิดซ้าย */
+        }
+        .card:hover i { color: var(--accent); transform: scale(1.1); }
+        
+        .card h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--dark); }
+
+        /* --- Image Styles --- */
+        .card-img-container {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+        }
+
+        .card:hover .card-img { transform: scale(1.05); }
+
+        /* --- Lightbox Modal --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            animation: fadeIn 0.3s;
+        }
+        .modal-img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            animation: zoomIn 0.4s;
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .close-btn:hover { color: var(--accent); }
+
         .badge { 
             background: linear-gradient(45deg, var(--accent), #ffcf5c);
-            color: #1a2a6c; 
-            padding: 6px 15px; 
-            border-radius: 30px; 
-            font-size: 0.9rem; 
-            font-weight: 800; 
-            display: inline-block;
+            color: #1a2a6c; padding: 6px 15px; border-radius: 30px; font-size: 0.9rem; font-weight: 800; display: inline-block;
             box-shadow: 0 4px 10px rgba(253, 187, 45, 0.4);
         }
 
-        /* Mobile Responsive */
+        /* --- Skill Section Styling --- */
+        .skill-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 400px;
+            max-width: 540px;
+            width: 100%;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+        .main-icon-box {
+            width: 60px; height: 60px;
+            background: #f0f4ff;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary);
+            transition: 0.4s;
+            flex-shrink: 0;
+        }
+        .skill-card:hover .main-icon-box {
+            background: var(--primary);
+            color: var(--accent);
+            transform: rotateY(360deg);
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .skill-group-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #777;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: default;
+            border: 1px solid transparent;
+        }
+
+        .tag i { font-size: 0.9rem; }
+
+        .tag.plc { background: #e3f2fd; color: #1565c0; border-color: #bbdefb; }
+        .tag.robot { background: #ffebee; color: #c62828; border-color: #ffcdd2; }
+        .tag.ai { background: #e8f5e9; color: #2e7d32; border-color: #c8e6c9; }
+        .tag.iot { background: #f3e5f5; color: #7b1fa2; border-color: #e1bee7; }
+        .tag.cad { background: #fff3e0; color: #ef6c00; border-color: #ffe0b2; }
+        .tag.graphic { background: #fff8e1; color: #f9a825; border-color: #ffecb3; }
+
+        .tag:hover { transform: scale(1.05); filter: brightness(0.95); }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .profile-img { width: 180px; height: 180px; } /* มือถือย่อลงหน่อยเดี๋ยวบังจอ */
-            .grid { grid-template-columns: 1fr; }
+            .profile-img { width: 180px; height: 180px; }
+            .card, .skill-card { max-width: 100%; }
         }
 
         footer { background: var(--primary); color: white; text-align: center; padding: 50px 20px; margin-top: 80px; }
@@ -124,63 +283,193 @@
 
     <header class="hero">
         <img src="profile.jpg" alt="ธนภูมิ แดงประดับ" class="profile-img">
-        
         <div class="hero-content">
             <h1>ธนภูมิ แดงประดับ</h1>
-            <p>รองชนะเลิศอันดับ 1 การแข่งขันทักษะระดับชาติ ครั้งที่ 33 <br>และเจ้าของรางวัลนวัตกรรมระดับ 5 ดาว</p>
+            <p>นักล่ารางวัลเวทีระดับชาติ ด้านหุ่นยนต์และนวัตกรรม AI<br>พร้อมรางวัลชนะเลิศถ้วยพระราชทานฯ</p>
         </div>
     </header>
 
     <section id="achievements">
         <h2 class="section-title">เกียรติประวัติระดับชาติ</h2>
         <div class="grid">
+            
             <div class="card">
-                <i class="fas fa-trophy"></i>
+                <i class="fas fa-trophy"></i> <div class="card-img-container">
+                    <img src="award-royal.jpg" alt="รางวัลถ้วยพระราชทาน" class="card-img" onclick="openModal('award-royal.jpg')">
+                </div>
+                <h3>รองชนะเลิศอันดับ 1 (ชิงถ้วยพระราชทานฯ)</h3>
+                <p>การแข่งขันควบคุมหุ่นยนต์และระบบอัตโนมัติ 4.0 ครั้งที่ 3 ณ ไบเทค บางนา</p>
+                <p style="margin-top:auto; padding-top:15px;"><span class="badge">ชนะจาก 41 ทีมทั่วประเทศ</span></p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-medal"></i> <div class="card-img-container">
+                    <img src="award-national.jpg" alt="แข่งขันทักษะวิชาชีพ" class="card-img" onclick="openModal('award-national.jpg')">
+                </div>
                 <h3>รองชนะเลิศอันดับ 1 ประเทศไทย</h3>
                 <p>ทักษะการโปรแกรมควบคุมระบบอัตโนมัติ (สาธิต) ปีการศึกษา 2568 ณ จังหวัดตรัง</p>
-                <p style="margin-top:15px;"><span class="badge">คะแนนปฏิบัติ 100 เต็ม</span></p>
+                <p style="margin-top:auto; padding-top:15px;"><span class="badge">คะแนนปฏิบัติ 100 เต็ม</span></p>
             </div>
+
             <div class="card">
-                <i class="fas fa-star"></i>
+                <i class="fas fa-award"></i> <div class="card-img-container">
+                    <img src="award-smartpill.jpg" alt="เครื่องนับเม็ดยาอัจฉริยะ" class="card-img" onclick="openModal('award-smartpill.jpg')">
+                </div>
+                <h3>ชนะเลิศอันดับ 1 ระดับภาค</h3>
+                <p>สิ่งประดิษฐ์ด้านนวัตกรรม AI : เครื่องนับเม็ดยาอัจฉริยะ (Smart Pill Counter)</p>
+                <p style="margin-top:auto; padding-top:15px;"><span class="badge">ตัวแทนแข่งขันระดับชาติ</span></p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-star"></i> <div class="card-img-container">
+                    <img src="award-tvet.jpg" alt="นวัตกรรม TVET" class="card-img" onclick="openModal('award-tvet.jpg')">
+                </div>
                 <h3>นวัตกรรมระดับ 5 ดาว</h3>
                 <p>ผลงาน AI-IIoT จากกิจกรรม TVET Smart Idea2Innovation โดย วช.</p>
-                <p style="margin-top:15px;"><span class="badge">Top Innovation</span></p>
+                <p style="margin-top:auto; padding-top:15px;"><span class="badge">Top Innovation</span></p>
             </div>
+
             <div class="card">
-                <i class="fas fa-microchip"></i>
+                <i class="fas fa-microchip"></i> <div class="card-img-container">
+                    <img src="award-tia.jpg" alt="TIA Finalist" class="card-img" onclick="openModal('award-tia.jpg')">
+                </div>
                 <h3>TIA 25 Finalist</h3>
                 <p>ผู้เข้ารอบสุดท้าย Thailand Innovation Awards ครั้งที่ 25 สาขาเทคโนโลยีปัญญาประดิษฐ์</p>
-                <p style="margin-top:15px; color: #777; font-size: 0.9rem;">(National Science Museum)</p>
+                <p style="margin-top:auto; padding-top:15px; color: #777; font-size: 0.9rem;">(National Science Museum)</p>
             </div>
+
         </div>
     </section>
 
     <section id="skills">
         <h2 class="section-title">ความเชี่ยวชาญ (Expertise)</h2>
         <div class="grid">
-            <div class="card">
-                <i class="fas fa-code"></i>
-                <h3>Industrial Programming</h3>
-                <p>Structured Text, Standard Function Block, Ladder Diagram<br><strong>(PLC Allen-Bradley & Mitsubishi)</strong></p>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="main-icon-box"><i class="fas fa-industry"></i></div>
+                    <h3 class="skill-title">Industrial Automation</h3>
+                </div>
+                
+                <div class="skill-group-title">PLC Programming (IEC 61131-3)</div>
+                <div class="skill-tags">
+                    <span class="tag plc"><i class="fas fa-microchip"></i> Mitsubishi</span>
+                    <span class="tag plc"><i class="fas fa-microchip"></i> Siemens</span>
+                    <span class="tag plc"><i class="fas fa-microchip"></i> Omron</span>
+                    <span class="tag plc"><i class="fas fa-microchip"></i> Allen-Bradley</span>
+                    <span class="tag plc">CIMON</span>
+                    <span class="tag plc">Wecon</span>
+                </div>
+
+                <div class="skill-group-title">Robotics Control</div>
+                <div class="skill-tags">
+                    <span class="tag robot"><i class="fas fa-robot"></i> KUKA</span>
+                    <span class="tag robot"><i class="fas fa-robot"></i> ABB</span>
+                    <span class="tag robot">NACHI</span>
+                    <span class="tag robot">OTC</span>
+                    <span class="tag robot">WELDEX</span>
+                </div>
             </div>
-            <div class="card">
-                <i class="fas fa-network-wired"></i>
-                <h3>Advanced Tech</h3>
-                <p>AI Machine Learning, IIoT Systems, Ubuntu OS, Home Assistant (HA OS)</p>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="main-icon-box"><i class="fas fa-brain"></i></div>
+                    <h3 class="skill-title">AI & Smart Tech</h3>
+                </div>
+
+                <div class="skill-group-title">AI & Development</div>
+                <div class="skill-tags">
+                    <span class="tag ai"><i class="fab fa-python"></i> Python</span>
+                    <span class="tag ai"><i class="fas fa-eye"></i> Yolo V8/V11</span>
+                    <span class="tag ai">CIRA CORE</span>
+                    <span class="tag ai"><i class="fab fa-html5"></i> HTML/CSS/JS</span>
+                </div>
+
+                <div class="skill-group-title">IoT Stack</div>
+                <div class="skill-tags">
+                    <span class="tag iot"><i class="fas fa-project-diagram"></i> NodeRED</span>
+                    <span class="tag iot"><i class="fas fa-home"></i> Home Assistant</span>
+                    <span class="tag iot">ESP32</span>
+                    <span class="tag iot">MQTT/Modbus</span>
+                    <span class="tag iot">Ubuntu Server</span>
+                    <span class="tag iot">Netpie</span>
+                </div>
             </div>
-            <div class="card">
-                <i class="fas fa-cogs"></i>
-                <h3>Mechatronics Design</h3>
-                <p>การออกแบบระบบคัดแยกชิ้นงานอัตโนมัติ และระบบ Smart Monitoring แบบ Real-time</p>
+
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="main-icon-box"><i class="fas fa-drafting-compass"></i></div>
+                    <h3 class="skill-title">Mechanical Design</h3>
+            </div>
+
+            <div class="skill-group-title">3D CAD Software</div>
+            <div class="skill-tags">
+                <span class="tag cad"><i class="fas fa-cube"></i> Solidworks</span>
+                <span class="tag cad">NX</span>
+                <span class="tag cad">Inventor</span>
+                <span class="tag cad">ZW3D</span>
+                <span class="tag cad">Onshape</span>
+                <span class="tag cad">CrownCAD</span>
+            </div>
+
+            <div class="skill-group-title">Maker Skills</div>
+            <div class="skill-tags">
+                <span class="tag cad"><i class="fas fa-print"></i> 3D Printing</span>
+                <span class="tag cad"><i class="fas fa-cog"></i> CNC Cut & Engrave</span>
+                <span class="tag cad"><i class="fas fa-burn"></i> Laser CNC</span>
             </div>
         </div>
-    </section>
+
+        <div class="skill-card">
+            <div class="skill-header">
+                <div class="main-icon-box"><i class="fas fa-pencil-ruler"></i></div>
+                <h3 class="skill-title">Graphics & General</h3>
+            </div>
+
+            <div class="skill-group-title">Design & Office</div>
+            <div class="skill-tags">
+                <span class="tag graphic"><i class="fas fa-pen-nib"></i> CorelDraw</span>
+                <span class="tag graphic"><i class="fab fa-adobe"></i> Photoshop</span>
+                <span class="tag graphic">Canva</span>
+                <span class="tag graphic"><i class="far fa-file-word"></i> MS Office</span>
+            </div>
+        </div>
+
+    </div>
+</section>
 
     <footer>
         <p style="font-size: 1.2rem; font-weight: bold;">© 2025 Thanapoom Daengpradub</p>
         <p>วิทยาลัยการอาชีพบางปะกง</p>
         <p style="margin-top: 20px; color: var(--accent); font-style: italic;">"ความรู้และประสบการณ์ คือความสำเร็จที่แท้จริง"</p>
     </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img class="modal-img" id="fullImage">
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("fullImage");
+            modal.style.display = "flex";
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // คลิกพื้นที่ว่างสีดำเพื่อปิด
+        window.onclick = function(event) {
+            var modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
