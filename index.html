@@ -4,529 +4,438 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanapoom Portfolio | Mechatronics Expert</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio ของธนภูมิ แดงประดับ ผู้เชี่ยวชาญด้านเมคคาทรอนิกส์ หุ่นยนต์ และ AI พร้อมรางวัลชนะเลิศระดับชาติ">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* ============================== */
+        /*  DESIGN TOKENS                 */
+        /* ============================== */
         :root {
-            --primary: #1a2a6c;
-            --secondary: #b21f1f;
-            --accent: #fdbb2d;
-            --dark: #121212;
-            --light: #f4f4f4;
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #f59e0b;
+            --accent-glow: rgba(245, 158, 11, 0.4);
+            --gold: #fbbf24;
+            --blue: #3b82f6;
+            --emerald: #10b981;
+            --rose: #f43f5e;
+            --violet: #8b5cf6;
+            --cyan: #06b6d4;
+            --surface: #ffffff;
+            --surface-dim: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: rgba(0,0,0,0.06);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Sarabun', sans-serif; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { background: var(--light); color: var(--dark); line-height: 1.6; }
-
-        /* Animation Keyframes */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        body {
+            font-family: 'Noto Sans Thai', 'Inter', system-ui, sans-serif;
+            background: var(--surface-dim); color: var(--text-primary);
+            line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
 
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+        /* ============================== */
+        /*  NAVIGATION                    */
+        /* ============================== */
+        nav {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            padding: 0 1.5rem; position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            height: 64px; display: flex; align-items: center;
         }
-        
-        /* Header & Nav */
-        nav { background: var(--primary); color: white; padding: 1rem; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .nav-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: bold; font-size: 1.5rem; letter-spacing: 1px; color: var(--accent); }
+        .nav-container { max-width: 1280px; margin: auto; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; color: var(--accent); text-decoration: none; font-family: 'Inter', sans-serif; }
+        .logo span { color: rgba(255,255,255,0.9); font-weight: 400; }
+        .nav-menu { display: flex; gap: 32px; list-style: none; }
+        .nav-link {
+            color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500;
+            font-size: 0.9rem; transition: var(--transition); position: relative;
+            letter-spacing: 0.2px; padding: 6px 0;
+        }
+        .nav-link:hover, .nav-link.active { color: #ffffff; }
+        .nav-link.active::after { content: ''; position: absolute; width: 100%; height: 2px; bottom: -2px; left: 0; background: var(--accent); border-radius: 1px; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background: var(--accent); transition: width 0.3s; border-radius: 1px; }
+        .nav-link:hover::after { width: 100%; }
+        .hamburger { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        .special-badge {
+            background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 6px 16px;
+            border-radius: 50px; border: 1px solid rgba(245, 158, 11, 0.25);
+            font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px;
+            font-family: 'Inter', sans-serif;
+        }
+        .mobile-only { display: none !important; }
 
-        /* Hero Section */
-        .hero { 
-            background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(26, 42, 108, 0.85)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=80');
-            background-size: cover; background-attachment: fixed; background-position: center;
-            min-height: 85vh;
-            color: white;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px;
+        /* ============================== */
+        /*  HERO SECTION                  */
+        /* ============================== */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #1e3a5f 100%);
+            min-height: 90vh; color: white;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 60px 24px; position: relative; overflow: hidden;
         }
-        
-        .profile-img {
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 6px solid var(--accent);
-            margin-bottom: 30px;
-            box-shadow: 0 0 30px rgba(253, 187, 45, 0.6);
-            animation: zoomIn 1.5s ease-out;
-        }
-
-        .hero-content { animation: fadeInUp 2s ease-out; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; color: var(--accent); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .hero p { font-size: 1.3rem; max-width: 800px; opacity: 0.9; }
-
-        /* Main Content */
-        section { max-width: 1200px; margin: 60px auto; padding: 20px; }
-        .section-title { text-align: center; margin-bottom: 50px; position: relative; padding-bottom: 15px; font-size: 2rem; font-weight: bold; color: var(--primary); }
-        .section-title::after { content: ''; width: 80px; height: 4px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px; }
-
-        /* --- Grid System (สำหรับ Achievements) --- */
-        .grid { 
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        
-        .card { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
-            transition: 0.4s; 
-            border-bottom: 5px solid var(--primary); 
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 320px;
-            max-width: 380px;
-            width: 100%; 
-        }
-
-        .card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(26, 42, 108, 0.2); border-bottom-color: var(--accent); }
-        
-        /* สไตล์ไอคอนในการ์ด */
-        .card i { 
-            font-size: 3rem; 
-            color: var(--primary); 
-            margin-bottom: 15px; /* ลดระยะห่างลงนิดหน่อย */
-            transition: 0.3s; 
-            align-self: flex-start; /* จัดชิดซ้าย */
-        }
-        .card:hover i { color: var(--accent); transform: scale(1.1); }
-        
-        .card h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--dark); }
-
-        /* --- Image Styles --- */
-        .card-img-container {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.5s ease;
-            cursor: pointer;
-        }
-
-        .card:hover .card-img { transform: scale(1.05); }
-
-        /* --- Lightbox Modal --- */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            animation: fadeIn 0.3s;
-        }
-        .modal-img {
-            max-width: 90%;
-            max-height: 80vh;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
-            animation: zoomIn 0.4s;
-        }
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .close-btn:hover { color: var(--accent); }
-
-        .badge { 
-            background: linear-gradient(45deg, var(--accent), #ffcf5c);
-            color: #1a2a6c; padding: 6px 15px; border-radius: 30px; font-size: 0.9rem; font-weight: 800; display: inline-block;
-            box-shadow: 0 4px 10px rgba(253, 187, 45, 0.4);
-        }
-
-        /* --- Skill Section Styling --- */
-        .skill-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 400px;
-            max-width: 540px;
-            width: 100%;
-        }
-
-        .skill-card::before {
+        .hero::before {
             content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 6px;
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(245,158,11,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(59,130,246,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, rgba(139,92,246,0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 80px;
+            background: var(--surface-dim); clip-path: ellipse(55% 100% at 50% 100%);
+        }
+        .profile-img {
+            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+            border: 4px solid rgba(245, 158, 11, 0.5); margin-bottom: 32px;
+            box-shadow: 0 0 60px rgba(245, 158, 11, 0.25);
+            animation: heroZoom 1.2s ease-out; position: relative; z-index: 1;
+        }
+        .hero-content { animation: heroFade 1.5s ease-out; position: relative; z-index: 1; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.2);
+            padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; color: var(--accent);
+            font-weight: 600; margin-bottom: 20px; font-family: 'Inter', sans-serif;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 900;
+            margin-bottom: 16px; letter-spacing: -1px; line-height: 1.15;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent), #fbbf24);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero p { font-size: 1.1rem; opacity: 0.7; max-width: 600px; font-weight: 300; line-height: 1.8; }
+        .hero-stats {
+            display: flex; gap: 40px; margin-top: 40px; position: relative; z-index: 1;
+            animation: heroFade 1.8s ease-out;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat-number {
+            font-size: 2.5rem; font-weight: 900; font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--accent), #fbbf24);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-stat-label { font-size: 0.8rem; opacity: 0.5; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+        @keyframes heroZoom { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        @keyframes heroFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ============================== */
+        /*  SECTIONS                      */
+        /* ============================== */
+        .section { max-width: 1280px; margin: 0 auto 80px; padding: 0 24px; }
+        .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+        .section-line { height: 3px; flex: 1; background: linear-gradient(90deg, var(--accent), transparent); border-radius: 2px; }
+        .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); white-space: nowrap; font-family: 'Inter', sans-serif; }
+        .section-icon { background: var(--primary); color: var(--accent); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+
+        .section-title-center {
+            text-align: center; margin-bottom: 50px; position: relative;
+        }
+        .section-title-center h2 {
+            font-size: 2rem; font-weight: 800; color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .section-title-center p { color: var(--text-muted); font-size: 0.95rem; }
+        .section-title-center::after {
+            content: ''; display: block; width: 60px; height: 3px;
+            background: var(--accent); margin: 16px auto 0; border-radius: 2px;
+        }
+
+        /* ============================== */
+        /*  ACHIEVEMENT CARDS             */
+        /* ============================== */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; }
+
+        .card {
+            background: var(--surface); border-radius: var(--radius-lg); overflow: hidden;
+            box-shadow: var(--shadow-md); transition: var(--transition);
+            display: flex; flex-direction: column; border: 1px solid var(--border);
+            position: relative;
+        }
+        .card:hover { transform: translateY(-12px); box-shadow: var(--shadow-xl); }
+        .card-img-container { width: 100%; height: 220px; overflow: hidden; position: relative; }
+        .card-img-container::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.3)); pointer-events: none;
+        }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .card:hover .card-img { transform: scale(1.08); }
+        .card-content { padding: 22px 24px 24px; flex-grow: 1; display: flex; flex-direction: column; }
+        .card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.5; margin-bottom: 6px; }
+        .card-badge {
+            display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px;
+            border-radius: 6px; font-size: 0.72rem; font-weight: 700; width: fit-content;
+            margin-bottom: 10px;
+        }
+        .badge-gold { background: #fef3c7; color: #92400e; }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
+
+        /* ============================== */
+        /*  SKILL CARDS                   */
+        /* ============================== */
+        .skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+
+        .skill-card {
+            background: var(--surface); border-radius: var(--radius-lg); padding: 28px;
+            box-shadow: var(--shadow-md); transition: var(--transition);
+            border: 1px solid var(--border); position: relative; overflow: hidden;
+        }
+        .skill-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
         }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .skill-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 15px;
-        }
+        .skill-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-xl); }
+        .skill-header { display: flex; align-items: center; margin-bottom: 20px; gap: 14px; }
         .main-icon-box {
-            width: 60px; height: 60px;
-            background: #f0f4ff;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--primary);
-            transition: 0.4s;
-            flex-shrink: 0;
+            width: 52px; height: 52px; background: #f0f4ff; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: var(--primary); transition: var(--transition); flex-shrink: 0;
         }
-        .skill-card:hover .main-icon-box {
-            background: var(--primary);
-            color: var(--accent);
-            transform: rotateY(360deg);
-        }
-
-        .skill-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #333;
-        }
-
+        .skill-card:hover .main-icon-box { background: var(--primary); color: var(--accent); transform: rotateY(360deg); }
+        .skill-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
         .skill-group-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #777;
-            margin-top: 15px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
+            margin-top: 16px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1.5px;
+            font-family: 'Inter', sans-serif;
         }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
         .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: 0.2s;
-            cursor: default;
-            border: 1px solid transparent;
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 5px 11px; border-radius: 7px; font-size: 0.8rem; font-weight: 600;
+            transition: 0.2s; cursor: default;
         }
+        .tag i { font-size: 0.8rem; }
+        .tag.plc { background: #dbeafe; color: #1e40af; }
+        .tag.robot { background: #ffe4e6; color: #9f1239; }
+        .tag.ai { background: #d1fae5; color: #065f46; }
+        .tag.iot { background: #ede9fe; color: #5b21b6; }
+        .tag.cad { background: #fef3c7; color: #92400e; }
+        .tag.graphic { background: #fce7f3; color: #9d174d; }
+        .tag:hover { transform: scale(1.05); }
 
-        .tag i { font-size: 0.9rem; }
+        /* ============================== */
+        /*  MODAL                         */
+        /* ============================== */
+        .modal {
+            display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92); backdrop-filter: blur(10px);
+            justify-content: center; align-items: center;
+        }
+        .modal-img { max-width: 92%; max-height: 85vh; border-radius: var(--radius-md); box-shadow: 0 0 60px rgba(0,0,0,0.5); animation: modalZoom 0.35s; }
+        @keyframes modalZoom { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .close-btn {
+            position: absolute; top: 20px; right: 30px; color: rgba(255,255,255,0.7);
+            font-size: 36px; cursor: pointer; width: 48px; height: 48px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: rgba(255,255,255,0.05); transition: 0.3s;
+        }
+        .close-btn:hover { color: white; background: rgba(255,255,255,0.15); }
 
-        .tag.plc { background: #e3f2fd; color: #1565c0; border-color: #bbdefb; }
-        .tag.robot { background: #ffebee; color: #c62828; border-color: #ffcdd2; }
-        .tag.ai { background: #e8f5e9; color: #2e7d32; border-color: #c8e6c9; }
-        .tag.iot { background: #f3e5f5; color: #7b1fa2; border-color: #e1bee7; }
-        .tag.cad { background: #fff3e0; color: #ef6c00; border-color: #ffe0b2; }
-        .tag.graphic { background: #fff8e1; color: #f9a825; border-color: #ffecb3; }
+        /* ============================== */
+        /*  FOOTER                        */
+        /* ============================== */
+        footer {
+            background: var(--primary); color: rgba(255,255,255,0.7);
+            text-align: center; padding: 48px 24px; border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        footer strong { color: white; }
+        footer .footer-links { display: flex; justify-content: center; gap: 24px; margin-top: 16px; }
+        footer a { color: var(--accent); text-decoration: none; font-weight: 500; transition: 0.3s; }
+        footer a:hover { color: #fbbf24; }
+        footer .quote { margin-top: 20px; color: var(--accent); font-style: italic; opacity: 0.8; font-size: 0.95rem; }
 
-        .tag:hover { transform: scale(1.05); filter: brightness(0.95); }
-
+        /* ============================== */
+        /*  RESPONSIVE                    */
+        /* ============================== */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .profile-img { width: 180px; height: 180px; }
-            .card, .skill-card { max-width: 100%; }
+            .nav-menu { display: none; }
+            .hamburger { display: block; }
+            .desktop-only { display: none; }
+            .grid, .skill-grid { grid-template-columns: 1fr; }
+            .hero h1 { letter-spacing: -0.5px; }
+            .profile-img { width: 160px; height: 160px; }
+            .hero-stats { gap: 24px; }
+            .hero-stat-number { font-size: 2rem; }
         }
-
-        /* --- สไตล์ป้ายไฟ Mechatronics Specialist (Special Badge) --- */
-.special-badge {
-    background: rgba(255, 255, 255, 0.1); /* พื้นหลังโปร่งใส */
-    color: #ffcf5c; /* สีทอง */
-    padding: 8px 20px;
-    border-radius: 50px; /* ทรงแคปซูล */
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: 1px solid rgba(255, 207, 92, 0.5); /* ขอบทองจางๆ */
-    box-shadow: 0 0 10px rgba(255, 207, 92, 0.2); /* แสงฟุ้งๆ */
-    cursor: default;
-    display: flex;
-    align-items: center;
-    gap: 8px; /* ระยะห่างไอคอนกับตัวหนังสือ */
-    transition: all 0.3s ease;
-}
-
-/* เอฟเฟกต์ตอนเอาเมาส์ไปชี้ */
-.special-badge:hover {
-    background: rgba(255, 207, 92, 0.2);
-    box-shadow: 0 0 20px rgba(255, 207, 92, 0.6); /* เรืองแสงวาบ */
-    transform: scale(1.05); /* ขยายใหญ่นิดนึง */
-    color: #ffffff; /* เปลี่ยนตัวหนังสือเป็นสีขาว */
-    border-color: #ffcf5c;
-}
-
-/* ทำให้ไอคอนขยับดุ๊กดิ๊กได้ตอนชี้ */
-.special-badge:hover i {
-    animation: shake 0.5s ease-in-out infinite;
-}
-
-@keyframes shake {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(-10deg); }
-    75% { transform: rotate(10deg); }
-    100% { transform: rotate(0deg); }
-}
-
-
-/* --- Navigation Bar Styles (Updated) --- */
-
-/* จัดระเบียบกล่อง Nav */
-.nav-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative; /* สำคัญสำหรับ Dropdown */
-}
-
-/* ลิงก์เมนู (Desktop) */
-.nav-menu {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-link {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: 0.3s;
-    position: relative;
-}
-
-/* เอฟเฟกต์ขีดเส้นใต้ตอนชี้เมาส์ */
-.nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--accent);
-    transition: width 0.3s;
-}
-
-.nav-link:hover {
-    color: var(--accent);
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* ปุ่ม Hamburger (ซ่อนใน PC) */
-.hamburger {
-    display: none;
-    font-size: 1.8rem;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.hamburger:hover { color: var(--accent); }
-
-/* ตัวช่วยซ่อน/แสดง ตามขนาดจอ */
-.mobile-only { display: none !important; }
-
-/* --- Mobile Responsive (หน้าจอมือถือ) --- */
-@media (max-width: 768px) {
-    
-    /* ซ่อนป้ายไฟอันใหญ่ใน PC เพื่อประหยัดที่ */
-    .desktop-only { display: none !important; }
-    
-    /* โชว์ปุ่มเมนู */
-    .hamburger { display: block; }
-
-    /* จัดสไตล์เมนู Dropdown */
-    .nav-menu {
-        position: absolute;
-        top: 100%; /* อยู่ใต้แถบเมนูพอดี */
-        left: 0;
-        width: 100%;
-        background: rgba(26, 42, 108, 0.95); /* สีน้ำเงินโปร่งแสงนิดๆ */
-        backdrop-filter: blur(10px); /* เบลอฉากหลัง */
-        flex-direction: column; /* เรียงลงล่าง */
-        align-items: center;
-        gap: 20px;
-        padding: 30px 0;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        
-        /* ซ่อนไว้ก่อน */
-        opacity: 0;
-        transform: translateY(-20px);
-        pointer-events: none; /* ห้ามคลิกตอนซ่อน */
-        transition: all 0.4s ease;
-        z-index: -1; /* ซ่อนไปข้างหลังก่อน */
-    }
-
-    /* คลาสสำหรับเปิดเมนู (JavaScript จะเติมคลาสนี้) */
-    .nav-menu.active {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: all;
-        z-index: 1000;
-    }
-
-    .nav-link { font-size: 1.2rem; }
-    
-    /* เอาป้ายไฟมาโชว์ในเมนูมือถือแทน */
-    .mobile-only { 
-        display: flex !important; 
-        margin-top: 15px;
-    }
-}
-
-
-        footer { background: var(--primary); color: white; text-align: center; padding: 50px 20px; margin-top: 80px; }
     </style>
 </head>
 <body>
 
-<nav>
-    <div class="nav-container">
-        <a href="index.html" class="logo" style="text-decoration: none;">
-            THANAPOOM<span style="color:white">.P</span>
-        </a>
-
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="works.html" class="nav-link">ผลงาน</a></li>
-            <li><a href="education.html" class="nav-link">ประวัติการศึกษา</a></li>
-            <li><a href="docs.html" class="nav-link">เอกสาร</a></li>
-            <li><a href="contact.html" class="nav-link">ติดต่อ</a></li>
-            
-            <div class="mobile-badge-container">
-                <div class="special-badge mobile-only">
-                    <i class="fas fa-bolt"></i> Mechatronics
-                </div>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">THANAPOOM<span>.P</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">หน้าหลัก</a></li>
+                <li><a href="works.html" class="nav-link">ผลงาน</a></li>
+                <li><a href="education.html" class="nav-link">การศึกษา</a></li>
+                <li><a href="docs.html" class="nav-link">เอกสาร</a></li>
+                <li><a href="contact.html" class="nav-link">ติดต่อ</a></li>
+            </ul>
+            <div class="special-badge desktop-only">
+                <i class="fas fa-bolt"></i> Mechatronics Specialist
             </div>
-        </ul>
-
-        <div class="special-badge desktop-only">
-            <i class="fas fa-bolt"></i> Mechatronics Specialist
+            <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
         </div>
+    </nav>
 
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-    </div>
-</nav>
-
+    <!-- ===================== HERO ===================== -->
     <header class="hero">
         <img src="images/profile.jpg" alt="ธนภูมิ แดงประดับ" class="profile-img">
         <div class="hero-content">
-            <h1>ธนภูมิ แดงประดับ</h1>
-            <p>นักล่ารางวัลเวทีระดับชาติ ด้านหุ่นยนต์และนวัตกรรม AI<br>พร้อมรางวัลชนะเลิศถ้วยพระราชทานฯ</p>
+            <div class="hero-badge"><i class="fas fa-sparkles"></i> MECHATRONICS & ROBOTICS</div>
+            <h1>ธนภูมิ <span>แดงประดับ</span></h1>
+            <p>
+                นักล่ารางวัลเวทีระดับชาติ ด้านหุ่นยนต์และนวัตกรรม AI
+                <br>พร้อมรางวัลชนะเลิศถ้วยพระราชทานฯ
+            </p>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number">9</div>
+                <div class="hero-stat-label">ผลงานทั้งหมด</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">5</div>
+                <div class="hero-stat-label">ระดับชาติ</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">3</div>
+                <div class="hero-stat-label">ชนะเลิศ</div>
+            </div>
         </div>
     </header>
 
-    <section id="achievements">
-        <h2 class="section-title">เกียรติประวัติระดับชาติ</h2>
+    <!-- ===================== ACHIEVEMENTS ===================== -->
+    <section class="section" id="achievements" style="margin-top: 60px;">
+        <div class="section-title-center">
+            <h2>เกียรติประวัติระดับชาติ</h2>
+            <p>รวมผลงานจากเวทีแข่งขัน นวัตกรรม และรางวัลเกียรติยศ</p>
+        </div>
         <div class="grid">
-            
+
             <div class="card">
-                <i class="fas fa-trophy"></i> <div class="card-img-container">
-                    <img src="images/award-royal.jpg" alt="รางวัลถ้วยพระราชทาน" class="card-img" onclick="openModal('images/award-royal.jpg')">
+                <div class="card-img-container">
+                    <img src="images/การแข่งขันควบคุมหุ่นยนต์และระบบอัตโนมัติ 4.0 ชิงถ้วยพระราชทาน ครั้งที่ 3.jpg" alt="ชิงถ้วยพระราชทาน" class="card-img" onclick="openModal(this.src)">
                 </div>
-                <h3>รองชนะเลิศอันดับ 1 (ชิงถ้วยพระราชทานฯ)</h3>
-                <p>การแข่งขันควบคุมหุ่นยนต์และระบบอัตโนมัติ 4.0 ครั้งที่ 3 ณ ไบเทค บางนา</p>
-                <p style="margin-top:auto; padding-top:15px;"><span class="badge">ชนะจาก 41 ทีมทั่วประเทศ</span></p>
+                <div class="card-content">
+                    <div class="card-badge badge-gold"><i class="fas fa-crown"></i> ถ้วยพระราชทาน</div>
+                    <h3>การแข่งขันควบคุมหุ่นยนต์และระบบอัตโนมัติ 4.0 ชิงถ้วยพระราชทาน ครั้งที่ 3</h3>
+                </div>
             </div>
 
             <div class="card">
-                <i class="fas fa-medal"></i> <div class="card-img-container">
-                    <img src="images/award-national.jpg" alt="แข่งขันทักษะวิชาชีพ" class="card-img" onclick="openModal('images/award-national.jpg')">
+                <div class="card-img-container">
+                    <img src="images/สิ่งประดิษฐ์ ชนะเลิศระดับชาติ ปีการศึกษา 2568.jpg" alt="สิ่งประดิษฐ์ ชนะเลิศระดับชาติ" class="card-img" onclick="openModal(this.src)">
                 </div>
-                <h3>รองชนะเลิศอันดับ 1 ระดับชาติ</h3>
-                <p>ทักษะการโปรแกรมควบคุมระบบอัตโนมัติ ปีการศึกษา 2568 ณ จังหวัดตรัง</p>
-                <p style="margin-top:auto; padding-top:15px;"><span class="badge">คะแนนปฏิบัติ 100 เต็ม</span></p>
+                <div class="card-content">
+                    <div class="card-badge badge-gold"><i class="fas fa-trophy"></i> ชนะเลิศ</div>
+                    <h3>สิ่งประดิษฐ์ ชนะเลิศระดับชาติ ปีการศึกษา 2568</h3>
+                </div>
             </div>
 
             <div class="card">
-                <i class="fas fa-award"></i> <div class="card-img-container">
-                    <img src="images/award-smartpill.jpg" alt="เครื่องนับเม็ดยาอัจฉริยะ" class="card-img" onclick="openModal('images/award-smartpill.jpg')">
+                <div class="card-img-container">
+                    <img src="images/สิ่งประดิษฐ์ ชนะเลิศระดับภาคตะวันออกและกรุงเทพมหานคร ปีการศึกษา 2568.jpg" alt="สิ่งประดิษฐ์ ชนะเลิศระดับภาค" class="card-img" onclick="openModal(this.src)">
                 </div>
-                <h3>ชนะเลิศ ระดับภาคตะวันออกและกรุงเทพมหานคร</h3>
-                <p>สิ่งประดิษฐ์ด้านนวัตกรรม AI : เครื่องนับเม็ดยาอัจฉริยะ (Smart Pill Counter)</p>
-                <p style="margin-top:auto; padding-top:15px;"><span class="badge">ตัวแทนแข่งขันระดับชาติ</span></p>
+                <div class="card-content">
+                    <div class="card-badge badge-gold"><i class="fas fa-trophy"></i> ชนะเลิศ</div>
+                    <h3>สิ่งประดิษฐ์ ชนะเลิศระดับภาคตะวันออกและกรุงเทพมหานคร ปีการศึกษา 2568</h3>
+                </div>
             </div>
 
             <div class="card">
-                <i class="fas fa-star"></i> <div class="card-img-container">
-                    <img src="images/award-tvet.jpg" alt="นวัตกรรม TVET" class="card-img" onclick="openModal('images/award-tvet.jpg')">
+                <div class="card-img-container">
+                    <img src="images/รางวัลนวัตกรรม ระดับ 5 ดาว TVET Smart Idea2Innovation ประจำปี 2568.jpg" alt="TVET 5 ดาว" class="card-img" onclick="openModal(this.src)">
                 </div>
-                <h3>นวัตกรรมระดับ 5 ดาว</h3>
-                <p>ผลงาน AI-IIoT จากกิจกรรม TVET Smart Idea2Innovation โดย วช.</p>
-                <p style="margin-top:auto; padding-top:15px;"><span class="badge">Top Innovation</span></p>
+                <div class="card-content">
+                    <div class="card-badge badge-gold"><i class="fas fa-star"></i> 5 ดาว</div>
+                    <h3>รางวัลนวัตกรรม ระดับ 5 ดาว TVET Smart Idea2Innovation ประจำปี 2568</h3>
+                </div>
             </div>
 
             <div class="card">
-                <i class="fas fa-microchip"></i> <div class="card-img-container">
-                    <img src="images/award-tia.jpg" alt="TIA Finalist" class="card-img" onclick="openModal('images/award-tia.jpg')">
+                <div class="card-img-container">
+                    <img src="images/Thailand Innovation Awards ครั้งที่ 25.jpg" alt="Thailand Innovation Awards" class="card-img" onclick="openModal(this.src)">
                 </div>
-                <h3>TIA 25 Finalist</h3>
-                <p>ผู้เข้ารอบสุดท้าย Thailand Innovation Awards ครั้งที่ 25 สาขาเทคโนโลยีปัญญาประดิษฐ์</p>
-                <p style="margin-top:auto; padding-top:15px; color: #777; font-size: 0.9rem;">(National Science Museum)</p>
+                <div class="card-content">
+                    <div class="card-badge badge-blue"><i class="fas fa-flag"></i> ระดับชาติ</div>
+                    <h3>Thailand Innovation Awards ครั้งที่ 25</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/รางวัลเด็กและเยาวชนดีเด่นระดับชาติ ประจำปี 2569.jpg" alt="เด็กและเยาวชนดีเด่น" class="card-img" onclick="openModal(this.src)">
+                </div>
+                <div class="card-content">
+                    <div class="card-badge badge-blue"><i class="fas fa-gem"></i> เกียรติยศ</div>
+                    <h3>รางวัลเด็กและเยาวชนดีเด่นระดับชาติ ประจำปี 2569</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/NSRU Robot & PLC ระดับอุดมศึกษาและอาชีวศึกษา.jpg" alt="NSRU Robot & PLC" class="card-img" onclick="openModal(this.src)">
+                </div>
+                <div class="card-content">
+                    <div class="card-badge badge-blue"><i class="fas fa-microchip"></i> PLC & Robot</div>
+                    <h3>NSRU Robot & PLC ระดับอุดมศึกษาและอาชีวศึกษา</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/ทักษะการโปรแกรมควบคุมระบบอัตโนมัติ ปีการศึกษา 2568 ณ จังหวัดตรัง.jpg" alt="ทักษะอัตโนมัติ" class="card-img" onclick="openModal(this.src)">
+                </div>
+                <div class="card-content">
+                    <div class="card-badge badge-blue"><i class="fas fa-cogs"></i> ทักษะวิชาชีพ</div>
+                    <h3>ทักษะการโปรแกรมควบคุมระบบอัตโนมัติ ปีการศึกษา 2568 ณ จังหวัดตรัง</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="images/ทดสอบฝีมือแรงงาน_ผู้ควบคุมระบบงานเชื่อมมิก - แม็ก ด้วยหุ่นยนต์ระดับ 1.jpg" alt="ฝีมือแรงงาน" class="card-img" onclick="openModal(this.src)">
+                </div>
+                <div class="card-content">
+                    <div class="card-badge badge-blue"><i class="fas fa-certificate"></i> การรับรอง</div>
+                    <h3>ทดสอบฝีมือแรงงาน — ผู้ควบคุมระบบงานเชื่อมมิก-แม็ก ด้วยหุ่นยนต์ ระดับ 1</h3>
+                </div>
             </div>
 
         </div>
     </section>
 
-    <section id="skills">
-        <h2 class="section-title">ความเชี่ยวชาญ (Expertise)</h2>
-        <div class="grid">
-            
+    <!-- ===================== SKILLS ===================== -->
+    <section class="section" id="skills">
+        <div class="section-title-center">
+            <h2>ความเชี่ยวชาญ</h2>
+            <p>Expertise & Technical Skills</p>
+        </div>
+        <div class="skill-grid">
+
             <div class="skill-card">
                 <div class="skill-header">
                     <div class="main-icon-box"><i class="fas fa-industry"></i></div>
                     <h3 class="skill-title">Industrial Automation</h3>
                 </div>
-                
                 <div class="skill-group-title">PLC Programming (IEC 61131-3)</div>
                 <div class="skill-tags">
                     <span class="tag plc"><i class="fas fa-microchip"></i> Mitsubishi</span>
@@ -536,7 +445,6 @@
                     <span class="tag plc">CIMON</span>
                     <span class="tag plc">Wecon</span>
                 </div>
-
                 <div class="skill-group-title">Robotics Control</div>
                 <div class="skill-tags">
                     <span class="tag robot"><i class="fas fa-robot"></i> KUKA</span>
@@ -552,7 +460,6 @@
                     <div class="main-icon-box"><i class="fas fa-brain"></i></div>
                     <h3 class="skill-title">AI & Smart Tech</h3>
                 </div>
-
                 <div class="skill-group-title">AI & Development</div>
                 <div class="skill-tags">
                     <span class="tag ai"><i class="fab fa-python"></i> Python</span>
@@ -560,7 +467,6 @@
                     <span class="tag ai">CIRA CORE</span>
                     <span class="tag ai"><i class="fab fa-html5"></i> HTML/CSS/JS</span>
                 </div>
-
                 <div class="skill-group-title">IoT Stack</div>
                 <div class="skill-tags">
                     <span class="tag iot"><i class="fas fa-project-diagram"></i> NodeRED</span>
@@ -576,105 +482,79 @@
                 <div class="skill-header">
                     <div class="main-icon-box"><i class="fas fa-drafting-compass"></i></div>
                     <h3 class="skill-title">Mechanical Design</h3>
+                </div>
+                <div class="skill-group-title">3D CAD Software</div>
+                <div class="skill-tags">
+                    <span class="tag cad"><i class="fas fa-cube"></i> Solidworks</span>
+                    <span class="tag cad">NX</span>
+                    <span class="tag cad">Inventor</span>
+                    <span class="tag cad">ZW3D</span>
+                    <span class="tag cad">Onshape</span>
+                    <span class="tag cad">CrownCAD</span>
+                </div>
+                <div class="skill-group-title">Maker Skills</div>
+                <div class="skill-tags">
+                    <span class="tag cad"><i class="fas fa-print"></i> 3D Printing</span>
+                    <span class="tag cad"><i class="fas fa-cog"></i> CNC Cut & Engrave</span>
+                    <span class="tag cad"><i class="fas fa-burn"></i> Laser CNC</span>
+                </div>
             </div>
 
-            <div class="skill-group-title">3D CAD Software</div>
-            <div class="skill-tags">
-                <span class="tag cad"><i class="fas fa-cube"></i> Solidworks</span>
-                <span class="tag cad">NX</span>
-                <span class="tag cad">Inventor</span>
-                <span class="tag cad">ZW3D</span>
-                <span class="tag cad">Onshape</span>
-                <span class="tag cad">CrownCAD</span>
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="main-icon-box"><i class="fas fa-pencil-ruler"></i></div>
+                    <h3 class="skill-title">Graphics & General</h3>
+                </div>
+                <div class="skill-group-title">Design & Office</div>
+                <div class="skill-tags">
+                    <span class="tag graphic"><i class="fas fa-pen-nib"></i> CorelDraw</span>
+                    <span class="tag graphic"><i class="fab fa-adobe"></i> Photoshop</span>
+                    <span class="tag graphic">Canva</span>
+                    <span class="tag graphic"><i class="far fa-file-word"></i> MS Office</span>
+                </div>
             </div>
 
-            <div class="skill-group-title">Maker Skills</div>
-            <div class="skill-tags">
-                <span class="tag cad"><i class="fas fa-print"></i> 3D Printing</span>
-                <span class="tag cad"><i class="fas fa-cog"></i> CNC Cut & Engrave</span>
-                <span class="tag cad"><i class="fas fa-burn"></i> Laser CNC</span>
-            </div>
         </div>
+    </section>
 
-        <div class="skill-card">
-            <div class="skill-header">
-                <div class="main-icon-box"><i class="fas fa-pencil-ruler"></i></div>
-                <h3 class="skill-title">Graphics & General</h3>
-            </div>
-
-            <div class="skill-group-title">Design & Office</div>
-            <div class="skill-tags">
-                <span class="tag graphic"><i class="fas fa-pen-nib"></i> CorelDraw</span>
-                <span class="tag graphic"><i class="fab fa-adobe"></i> Photoshop</span>
-                <span class="tag graphic">Canva</span>
-                <span class="tag graphic"><i class="far fa-file-word"></i> MS Office</span>
-            </div>
-        </div>
-
-    </div>
-</section>
-
+    <!-- ===================== FOOTER ===================== -->
     <footer>
-        <p style="font-size: 1.2rem; font-weight: bold;">© 2025 Thanapoom Daengpradub</p>
-        <p>วิทยาลัยการอาชีพบางปะกง</p>
-        <p style="margin-top: 20px; color: var(--accent); font-style: italic;">"ความรู้และประสบการณ์ คือความสำเร็จที่แท้จริง"</p>
+        <p><strong>© 2025 Thanapoom Daengpradub</strong></p>
+        <p style="margin-top: 6px; font-size: 0.9rem;">Mechatronics Specialist — วิทยาลัยการอาชีพบางปะกง</p>
+        <div class="footer-links">
+            <a href="works.html">ผลงาน</a>
+            <a href="education.html">การศึกษา</a>
+            <a href="contact.html">ติดต่อ</a>
+        </div>
+        <p class="quote">"ความรู้และประสบการณ์ คือความสำเร็จที่แท้จริง"</p>
     </footer>
 
-    <div id="imageModal" class="modal">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-btn">&times;</span>
         <img class="modal-img" id="fullImage">
     </div>
 
     <script>
-        function openModal(imageSrc) {
-            var modal = document.getElementById("imageModal");
-            var modalImg = document.getElementById("fullImage");
-            modal.style.display = "flex";
-            modalImg.src = imageSrc;
-        }
+        function openModal(src) { document.getElementById('fullImage').src = src; document.getElementById('imageModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('imageModal').style.display = 'none'; document.body.style.overflow = ''; }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+        window.onclick = e => { if (e.target === document.getElementById('imageModal')) closeModal(); };
 
-        function closeModal() {
-            var modal = document.getElementById("imageModal");
-            modal.style.display = "none";
-        }
-
-        // คลิกพื้นที่ว่างสีดำเพื่อปิด
-        window.onclick = function(event) {
-            var modal = document.getElementById("imageModal");
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-<script>
-        // ฟังก์ชันเปิด/ปิด เมนูมือถือ
         function toggleMenu() {
             const menu = document.getElementById("navMenu");
             const icon = document.querySelector(".hamburger i");
-            
-            // สลับคลาส active
-            menu.classList.toggle("active");
-
-            // เปลี่ยนไอคอน (ถ้าเปิดเป็นกากบาท X, ถ้าปิดเป็น 3 ขีด)
-            if (menu.classList.contains("active")) {
-                icon.classList.remove("fa-bars");
-                icon.classList.add("fa-times");
+            if (menu.style.display === "flex") {
+                menu.style.display = "none";
+                icon.classList.remove("fa-times"); icon.classList.add("fa-bars");
             } else {
-                icon.classList.remove("fa-times");
-                icon.classList.add("fa-bars");
+                menu.style.display = "flex"; menu.style.flexDirection = "column";
+                menu.style.position = "absolute"; menu.style.top = "64px"; menu.style.left = "0";
+                menu.style.width = "100%"; menu.style.background = "rgba(15,23,42,0.98)";
+                menu.style.padding = "24px"; menu.style.zIndex = "999";
+                menu.style.backdropFilter = "blur(20px)"; menu.style.gap = "18px"; menu.style.alignItems = "center";
+                icon.classList.remove("fa-bars"); icon.classList.add("fa-times");
             }
         }
-
-        // เสริม: คลิกที่ลิ้งค์แล้วให้เมนูหุบเองอัตโนมัติ
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById("navMenu");
-                const icon = document.querySelector(".hamburger i");
-                menu.classList.remove("active");
-                icon.classList.remove("fa-times");
-                icon.classList.add("fa-bars");
-            });
-        });
     </script>
 </body>
 </html>
