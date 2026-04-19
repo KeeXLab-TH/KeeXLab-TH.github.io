@@ -4,275 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanapoom Portfolio | Mechatronics Expert</title>
-    <meta name="description" content="Portfolio ของธนภูมิ แดงประดับ ผู้เชี่ยวชาญด้านเมคคาทรอนิกส์ หุ่นยนต์ และ AI พร้อมรางวัลชนะเลิศระดับชาติ">
+    <meta name="description" content="Portfolio ของธนภูมิ แดงประดับ ผู้เชี่ยวชาญด้านเมคคาทรอนิกส์ หุ่นยนต์ และ AI">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* ============================== */
-        /*  DESIGN TOKENS                 */
-        /* ============================== */
         :root {
-            --primary: #0f172a;
-            --primary-light: #1e293b;
-            --accent: #f59e0b;
-            --accent-glow: rgba(245, 158, 11, 0.4);
-            --gold: #fbbf24;
-            --blue: #3b82f6;
-            --emerald: #10b981;
-            --rose: #f43f5e;
-            --violet: #8b5cf6;
-            --cyan: #06b6d4;
-            --surface: #ffffff;
-            --surface-dim: #f8fafc;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
+            --primary: #0f172a; --primary-light: #1e293b;
+            --accent: #f59e0b; --gold: #fbbf24;
+            --blue: #3b82f6; --emerald: #10b981; --rose: #f43f5e; --violet: #8b5cf6; --cyan: #06b6d4;
+            --surface: #ffffff; --surface-dim: #f8fafc;
+            --text-primary: #0f172a; --text-secondary: #475569; --text-muted: #94a3b8;
             --border: rgba(0,0,0,0.06);
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
-            --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
-            --radius-md: 14px;
-            --radius-lg: 20px;
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08); --shadow-lg: 0 12px 40px rgba(0,0,0,0.12); --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+            --radius-md: 14px; --radius-lg: 20px;
             --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Noto Sans Thai', 'Inter', system-ui, sans-serif;
-            background: var(--surface-dim); color: var(--text-primary);
-            line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden;
-        }
+        body { font-family: 'Noto Sans Thai','Inter',system-ui,sans-serif; background: var(--surface-dim); color: var(--text-primary); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-        /* ============================== */
-        /*  NAVIGATION                    */
-        /* ============================== */
-        nav {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px) saturate(180%);
-            padding: 0 1.5rem; position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            height: 64px; display: flex; align-items: center;
-        }
+        /* ====== NAV ====== */
+        nav { background: rgba(15,23,42,0.95); backdrop-filter: blur(20px) saturate(180%); padding: 0 1.5rem; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); height: 64px; display: flex; align-items: center; }
         .nav-container { max-width: 1280px; margin: auto; display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; color: var(--accent); text-decoration: none; font-family: 'Inter', sans-serif; }
+        .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; color: var(--accent); text-decoration: none; font-family: 'Inter',sans-serif; }
         .logo span { color: rgba(255,255,255,0.9); font-weight: 400; }
-        .nav-menu { display: flex; gap: 32px; list-style: none; }
-        .nav-link {
-            color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500;
-            font-size: 0.9rem; transition: var(--transition); position: relative;
-            letter-spacing: 0.2px; padding: 6px 0;
-        }
-        .nav-link:hover, .nav-link.active { color: #ffffff; }
-        .nav-link.active::after { content: ''; position: absolute; width: 100%; height: 2px; bottom: -2px; left: 0; background: var(--accent); border-radius: 1px; }
-        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background: var(--accent); transition: width 0.3s; border-radius: 1px; }
+        .nav-menu { display: flex; gap: 28px; list-style: none; }
+        .nav-link { color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500; font-size: 0.88rem; transition: var(--transition); position: relative; padding: 6px 0; }
+        .nav-link:hover, .nav-link.active { color: #fff; }
+        .nav-link.active::after { content:''; position: absolute; width: 100%; height: 2px; bottom: -2px; left: 0; background: var(--accent); border-radius: 1px; }
+        .nav-link::after { content:''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background: var(--accent); transition: width 0.3s; border-radius: 1px; }
         .nav-link:hover::after { width: 100%; }
-        .hamburger { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
-        .special-badge {
-            background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 6px 16px;
-            border-radius: 50px; border: 1px solid rgba(245, 158, 11, 0.25);
-            font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px;
-            font-family: 'Inter', sans-serif;
-        }
+        .hamburger { display: none; color: white; font-size: 1.5rem; cursor: pointer; background: none; border: none; }
+        .special-badge { background: rgba(245,158,11,0.1); color: var(--accent); padding: 6px 16px; border-radius: 50px; border: 1px solid rgba(245,158,11,0.25); font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px; font-family: 'Inter',sans-serif; }
         .mobile-only { display: none !important; }
 
-        /* ============================== */
-        /*  HERO SECTION                  */
-        /* ============================== */
+        /* ====== HERO ====== */
         .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #1e3a5f 100%);
-            min-height: 90vh; color: white;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 60px 24px; position: relative; overflow: hidden;
+            background: linear-gradient(160deg, #0f172a 0%, #1e293b 35%, #1a2e4a 60%, #0f172a 100%);
+            min-height: 100vh; color: white; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 60px 24px; position: relative; overflow: hidden;
         }
         .hero::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            content:''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(245,158,11,0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(59,130,246,0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 60% 80%, rgba(139,92,246,0.06) 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 50%, rgba(245,158,11,0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(59,130,246,0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 60% 80%, rgba(139,92,246,0.05) 0%, transparent 50%);
             pointer-events: none;
         }
         .hero::after {
-            content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 80px;
+            content:''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 80px;
             background: var(--surface-dim); clip-path: ellipse(55% 100% at 50% 100%);
         }
-        .profile-img {
-            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
-            border: 4px solid rgba(245, 158, 11, 0.5); margin-bottom: 32px;
-            box-shadow: 0 0 60px rgba(245, 158, 11, 0.25);
-            animation: heroZoom 1.2s ease-out; position: relative; z-index: 1;
+
+        /* Grid pattern */
+        .hero-grid {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
         }
+
+        /* Floating orbs */
+        .orb { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.35; animation: float 8s ease-in-out infinite; z-index: 0; }
+        .orb-1 { width: 280px; height: 280px; background: rgba(245,158,11,0.15); top: 10%; left: 5%; }
+        .orb-2 { width: 220px; height: 220px; background: rgba(59,130,246,0.12); bottom: 20%; right: 8%; animation-delay: -3s; }
+        .orb-3 { width: 180px; height: 180px; background: rgba(139,92,246,0.1); top: 55%; left: 55%; animation-delay: -5s; }
+        @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-30px) scale(1.05); } }
+
+        /* Profile image */
+        .profile-wrapper { position: relative; z-index: 1; margin-bottom: 32px; }
+        .profile-img {
+            width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+            border: 3px solid rgba(245,158,11,0.4);
+            box-shadow: 0 0 60px rgba(245,158,11,0.2), 0 0 0 8px rgba(245,158,11,0.05);
+            animation: heroZoom 1.2s ease-out;
+        }
+        .profile-ring {
+            position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px;
+            border-radius: 50%; border: 2px dashed rgba(245,158,11,0.2);
+            animation: spin 20s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .profile-status {
+            position: absolute; bottom: 6px; right: 6px;
+            width: 24px; height: 24px; border-radius: 50%;
+            background: var(--emerald); border: 3px solid var(--primary);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); } 50% { box-shadow: 0 0 0 8px rgba(16,185,129,0); } }
+
         .hero-content { animation: heroFade 1.5s ease-out; position: relative; z-index: 1; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.2);
-            padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; color: var(--accent);
-            font-weight: 600; margin-bottom: 20px; font-family: 'Inter', sans-serif;
+            background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.18);
+            padding: 8px 20px; border-radius: 50px; font-size: 0.8rem; color: var(--accent);
+            font-weight: 600; margin-bottom: 20px; font-family: 'Inter',sans-serif;
+            letter-spacing: 1px;
         }
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 900;
-            margin-bottom: 16px; letter-spacing: -1px; line-height: 1.15;
+            font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900;
+            margin-bottom: 14px; letter-spacing: -1px; line-height: 1.15;
         }
-        .hero h1 span {
+        .hero h1 em {
+            font-style: normal; position: relative;
             background: linear-gradient(135deg, var(--accent), #fbbf24);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .hero p { font-size: 1.1rem; opacity: 0.7; max-width: 600px; font-weight: 300; line-height: 1.8; }
-        .hero-stats {
-            display: flex; gap: 40px; margin-top: 40px; position: relative; z-index: 1;
-            animation: heroFade 1.8s ease-out;
+        .hero-desc {
+            font-size: 1.05rem; opacity: 0.65; max-width: 560px; font-weight: 300;
+            line-height: 1.85; margin-bottom: 36px;
         }
-        .hero-stat { text-align: center; }
-        .hero-stat-number {
-            font-size: 2.5rem; font-weight: 900; font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--accent), #fbbf24);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+
+        /* Typed text cursor */
+        .typed-container {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+            padding: 6px 16px; border-radius: 8px; margin-bottom: 24px;
+            font-family: 'Inter',monospace; font-size: 0.85rem; color: var(--emerald);
+            font-weight: 500; letter-spacing: 0.3px;
         }
-        .hero-stat-label { font-size: 0.8rem; opacity: 0.5; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+        .typed-cursor {
+            display: inline-block; width: 2px; height: 16px; background: var(--accent);
+            animation: blink 1s step-end infinite; margin-left: 2px;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* CTA buttons */
+        .hero-cta { display: flex; gap: 14px; position: relative; z-index: 1; animation: heroFade 1.8s ease-out; flex-wrap: wrap; justify-content: center; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 30px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: var(--transition); border: none; cursor: pointer; font-family: inherit; }
+        .btn-primary { background: var(--accent); color: var(--primary); box-shadow: 0 4px 20px rgba(245,158,11,0.3); }
+        .btn-primary:hover { background: #fbbf24; transform: translateY(-3px); box-shadow: 0 8px 30px rgba(245,158,11,0.4); }
+        .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.15); }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
 
         @keyframes heroZoom { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
         @keyframes heroFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ============================== */
-        /*  SECTIONS                      */
-        /* ============================== */
+        /* ====== SECTIONS ====== */
         .section { max-width: 1280px; margin: 0 auto 80px; padding: 0 24px; }
-        .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
-        .section-line { height: 3px; flex: 1; background: linear-gradient(90deg, var(--accent), transparent); border-radius: 2px; }
-        .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); white-space: nowrap; font-family: 'Inter', sans-serif; }
-        .section-icon { background: var(--primary); color: var(--accent); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
-
-        .section-title-center {
-            text-align: center; margin-bottom: 50px; position: relative;
-        }
-        .section-title-center h2 {
-            font-size: 2rem; font-weight: 800; color: var(--text-primary);
-            margin-bottom: 8px;
-        }
+        .section-title-center { text-align: center; margin-bottom: 50px; }
+        .section-title-center h2 { font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
         .section-title-center p { color: var(--text-muted); font-size: 0.95rem; }
-        .section-title-center::after {
-            content: ''; display: block; width: 60px; height: 3px;
-            background: var(--accent); margin: 16px auto 0; border-radius: 2px;
-        }
+        .section-title-center::after { content:''; display: block; width: 60px; height: 3px; background: var(--accent); margin: 16px auto 0; border-radius: 2px; }
 
-        /* ============================== */
-        /*  ACHIEVEMENT CARDS             */
-        /* ============================== */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 28px; }
-
-        .card {
-            background: var(--surface); border-radius: var(--radius-lg); overflow: hidden;
-            box-shadow: var(--shadow-md); transition: var(--transition);
-            display: flex; flex-direction: column; border: 1px solid var(--border);
-            position: relative;
+        /* ====== QUICK LINKS GRID ====== */
+        .quick-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 60px; }
+        .quick-card {
+            background: var(--surface); border-radius: var(--radius-lg); padding: 36px 24px;
+            text-align: center; box-shadow: var(--shadow-md); border: 1px solid var(--border);
+            transition: var(--transition); position: relative; overflow: hidden;
+            text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center;
         }
-        .card:hover { transform: translateY(-12px); box-shadow: var(--shadow-xl); }
-        .card-img-container { width: 100%; height: 220px; overflow: hidden; position: relative; }
-        .card-img-container::after {
-            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.3)); pointer-events: none;
-        }
-        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
-        .card:hover .card-img { transform: scale(1.08); }
-        .card-content { padding: 22px 24px 24px; flex-grow: 1; display: flex; flex-direction: column; }
-        .card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); line-height: 1.5; margin-bottom: 6px; }
-        .card-badge {
-            display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px;
-            border-radius: 6px; font-size: 0.72rem; font-weight: 700; width: fit-content;
-            margin-bottom: 10px;
-        }
-        .badge-gold { background: #fef3c7; color: #92400e; }
-        .badge-blue { background: #dbeafe; color: #1e40af; }
-
-        /* ============================== */
-        /*  SKILL CARDS                   */
-        /* ============================== */
-        .skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
-
-        .skill-card {
-            background: var(--surface); border-radius: var(--radius-lg); padding: 28px;
-            box-shadow: var(--shadow-md); transition: var(--transition);
-            border: 1px solid var(--border); position: relative; overflow: hidden;
-        }
-        .skill-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        .skill-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-xl); }
-        .skill-header { display: flex; align-items: center; margin-bottom: 20px; gap: 14px; }
-        .main-icon-box {
-            width: 52px; height: 52px; background: #f0f4ff; border-radius: 14px;
+        .quick-card::before { content:''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+        .quick-card:nth-child(1)::before { background: linear-gradient(90deg, var(--accent), #fbbf24); }
+        .quick-card:nth-child(2)::before { background: linear-gradient(90deg, var(--emerald), #34d399); }
+        .quick-card:nth-child(3)::before { background: linear-gradient(90deg, var(--blue), #60a5fa); }
+        .quick-card:nth-child(4)::before { background: linear-gradient(90deg, var(--violet), #a78bfa); }
+        .quick-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-xl); }
+        .quick-icon {
+            width: 64px; height: 64px; border-radius: 16px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: var(--primary); transition: var(--transition); flex-shrink: 0;
+            font-size: 1.5rem; margin-bottom: 16px; transition: var(--transition);
         }
+        .quick-card:nth-child(1) .quick-icon { background: #fef3c7; color: #d97706; }
+        .quick-card:nth-child(2) .quick-icon { background: #d1fae5; color: #059669; }
+        .quick-card:nth-child(3) .quick-icon { background: #dbeafe; color: #2563eb; }
+        .quick-card:nth-child(4) .quick-icon { background: #ede9fe; color: #7c3aed; }
+        .quick-card:hover .quick-icon { transform: scale(1.15) rotateY(180deg); border-radius: 50%; }
+        .quick-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+        .quick-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+        .quick-link-arrow {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.8rem; font-weight: 700; color: var(--blue); transition: 0.3s;
+        }
+        .quick-card:hover .quick-link-arrow { gap: 10px; }
+
+        /* ====== MARQUEE SKILLS ====== */
+        .marquee-section { background: var(--primary); padding: 24px 0; overflow: hidden; position: relative; }
+        .marquee-track { display: flex; gap: 32px; animation: marquee 30s linear infinite; width: max-content; }
+        .marquee-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 600; white-space: nowrap; font-family: 'Inter',sans-serif; }
+        .marquee-item i { color: var(--accent); }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ====== SKILL CARDS ====== */
+        .skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .skill-card { background: var(--surface); border-radius: var(--radius-lg); padding: 26px; box-shadow: var(--shadow-md); transition: var(--transition); border: 1px solid var(--border); position: relative; overflow: hidden; }
+        .skill-card::before { content:''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); }
+        .skill-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); }
+        .skill-header { display: flex; align-items: center; margin-bottom: 18px; gap: 12px; }
+        .main-icon-box { width: 48px; height: 48px; background: #f0f4ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--primary); transition: var(--transition); flex-shrink: 0; }
         .skill-card:hover .main-icon-box { background: var(--primary); color: var(--accent); transform: rotateY(360deg); }
-        .skill-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
-        .skill-group-title {
-            font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
-            margin-top: 16px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1.5px;
-            font-family: 'Inter', sans-serif;
-        }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-        .tag {
-            display: inline-flex; align-items: center; gap: 4px;
-            padding: 5px 11px; border-radius: 7px; font-size: 0.8rem; font-weight: 600;
-            transition: 0.2s; cursor: default;
-        }
-        .tag i { font-size: 0.8rem; }
-        .tag.plc { background: #dbeafe; color: #1e40af; }
-        .tag.robot { background: #ffe4e6; color: #9f1239; }
-        .tag.ai { background: #d1fae5; color: #065f46; }
-        .tag.iot { background: #ede9fe; color: #5b21b6; }
-        .tag.cad { background: #fef3c7; color: #92400e; }
-        .tag.graphic { background: #fce7f3; color: #9d174d; }
+        .skill-title { font-size: 1.05rem; font-weight: 700; }
+        .skill-group-title { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); margin-top: 14px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1.5px; font-family: 'Inter',sans-serif; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 0.78rem; font-weight: 600; transition: 0.2s; cursor: default; }
+        .tag i { font-size: 0.75rem; }
+        .tag.plc { background: #dbeafe; color: #1e40af; } .tag.robot { background: #ffe4e6; color: #9f1239; }
+        .tag.ai { background: #d1fae5; color: #065f46; } .tag.iot { background: #ede9fe; color: #5b21b6; }
+        .tag.cad { background: #fef3c7; color: #92400e; } .tag.graphic { background: #fce7f3; color: #9d174d; }
         .tag:hover { transform: scale(1.05); }
 
-        /* ============================== */
-        /*  MODAL                         */
-        /* ============================== */
-        .modal {
-            display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.92); backdrop-filter: blur(10px);
-            justify-content: center; align-items: center;
-        }
+        /* ====== MODAL ====== */
+        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); backdrop-filter: blur(10px); justify-content: center; align-items: center; }
         .modal-img { max-width: 92%; max-height: 85vh; border-radius: var(--radius-md); box-shadow: 0 0 60px rgba(0,0,0,0.5); animation: modalZoom 0.35s; }
         @keyframes modalZoom { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .close-btn {
-            position: absolute; top: 20px; right: 30px; color: rgba(255,255,255,0.7);
-            font-size: 36px; cursor: pointer; width: 48px; height: 48px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; background: rgba(255,255,255,0.05); transition: 0.3s;
-        }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: rgba(255,255,255,0.7); font-size: 36px; cursor: pointer; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.05); transition: 0.3s; }
         .close-btn:hover { color: white; background: rgba(255,255,255,0.15); }
 
-        /* ============================== */
-        /*  FOOTER                        */
-        /* ============================== */
-        footer {
-            background: var(--primary); color: rgba(255,255,255,0.7);
-            text-align: center; padding: 48px 24px; border-top: 1px solid rgba(255,255,255,0.05);
-        }
+        /* ====== FOOTER ====== */
+        footer { background: var(--primary); color: rgba(255,255,255,0.7); text-align: center; padding: 48px 24px; border-top: 1px solid rgba(255,255,255,0.05); }
         footer strong { color: white; }
-        footer .footer-links { display: flex; justify-content: center; gap: 24px; margin-top: 16px; }
-        footer a { color: var(--accent); text-decoration: none; font-weight: 500; transition: 0.3s; }
+        footer .footer-links { display: flex; justify-content: center; gap: 20px; margin-top: 16px; flex-wrap: wrap; }
+        footer a { color: var(--accent); text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 0.9rem; }
         footer a:hover { color: #fbbf24; }
-        footer .quote { margin-top: 20px; color: var(--accent); font-style: italic; opacity: 0.8; font-size: 0.95rem; }
+        footer .quote { margin-top: 20px; color: var(--accent); font-style: italic; opacity: 0.8; font-size: 0.9rem; }
 
-        /* ============================== */
-        /*  RESPONSIVE                    */
-        /* ============================== */
+        /* ====== MOBILE ====== */
+        .mobile-menu-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 998; }
+        .mobile-menu-overlay.active { display: block; }
+
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
+            .nav-menu { display: none; position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--primary); flex-direction: column; padding: 80px 32px 32px; gap: 0; z-index: 999; transition: right 0.35s ease; box-shadow: -10px 0 30px rgba(0,0,0,0.3); }
+            .nav-menu.active { display: flex; right: 0; }
+            .nav-menu li { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+            .nav-link { font-size: 1.05rem; display: block; }
             .hamburger { display: block; }
-            .desktop-only { display: none; }
-            .grid, .skill-grid { grid-template-columns: 1fr; }
-            .hero h1 { letter-spacing: -0.5px; }
-            .profile-img { width: 160px; height: 160px; }
-            .hero-stats { gap: 24px; }
-            .hero-stat-number { font-size: 2rem; }
+            .desktop-only { display: none !important; }
+            .hero { min-height: 100vh; padding: 40px 20px; }
+            .hero h1 { font-size: 2rem; letter-spacing: -0.5px; }
+            .hero-desc { font-size: 0.95rem; }
+            .profile-img { width: 130px; height: 130px; }
+            .quick-links { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .skill-grid { grid-template-columns: 1fr; }
+            .btn { padding: 11px 22px; font-size: 0.85rem; }
+            .section-title-center h2 { font-size: 1.6rem; }
+            .section { margin-bottom: 50px; }
+            .orb { display: none; }
+        }
+        @media (max-width: 480px) {
+            .hero-cta { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; max-width: 280px; }
+            .quick-links { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -284,247 +260,165 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html" class="nav-link active">หน้าหลัก</a></li>
                 <li><a href="works.html" class="nav-link">ผลงาน</a></li>
+                <li><a href="experience.html" class="nav-link">ประสบการณ์</a></li>
                 <li><a href="education.html" class="nav-link">การศึกษา</a></li>
                 <li><a href="docs.html" class="nav-link">เอกสาร</a></li>
                 <li><a href="contact.html" class="nav-link">ติดต่อ</a></li>
             </ul>
-            <div class="special-badge desktop-only">
-                <i class="fas fa-bolt"></i> Mechatronics Specialist
-            </div>
-            <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <div class="special-badge desktop-only"><i class="fas fa-bolt"></i> Mechatronics Specialist</div>
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
+    <div class="mobile-menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 
-    <!-- ===================== HERO ===================== -->
+    <!-- ======== HERO ======== -->
     <header class="hero">
-        <img src="images/profile.jpg" alt="ธนภูมิ แดงประดับ" class="profile-img">
-        <div class="hero-content">
-            <div class="hero-badge"><i class="fas fa-sparkles"></i> MECHATRONICS & ROBOTICS</div>
-            <h1>ธนภูมิ <span>แดงประดับ</span></h1>
-            <p>
-                นักล่ารางวัลเวทีระดับชาติ ด้านหุ่นยนต์และนวัตกรรม AI
-                <br>พร้อมรางวัลชนะเลิศถ้วยพระราชทานฯ
-            </p>
+        <div class="hero-grid"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+
+        <div class="profile-wrapper">
+            <div class="profile-ring"></div>
+            <img src="images/profile.jpg" alt="ธนภูมิ แดงประดับ" class="profile-img">
+            <div class="profile-status"></div>
         </div>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="hero-stat-number">9</div>
-                <div class="hero-stat-label">ผลงานทั้งหมด</div>
+
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-bolt"></i> MECHATRONICS & ROBOTICS SPECIALIST</div>
+            <h1>ธนภูมิ <em>แดงประดับ</em></h1>
+
+            <div class="typed-container">
+                <span>> </span>
+                <span id="typedText"></span>
+                <span class="typed-cursor"></span>
             </div>
-            <div class="hero-stat">
-                <div class="hero-stat-number">5</div>
-                <div class="hero-stat-label">ระดับชาติ</div>
-            </div>
-            <div class="hero-stat">
-                <div class="hero-stat-number">3</div>
-                <div class="hero-stat-label">ชนะเลิศ</div>
-            </div>
+
+            <p class="hero-desc">นักล่ารางวัลเวทีระดับชาติ ด้านหุ่นยนต์และนวัตกรรม AI<br>พร้อมรางวัลชนะเลิศถ้วยพระราชทานฯ</p>
+        </div>
+
+        <div class="hero-cta">
+            <a href="works.html" class="btn btn-primary"><i class="fas fa-trophy"></i> ดูผลงานทั้งหมด</a>
+            <a href="contact.html" class="btn btn-outline"><i class="fas fa-paper-plane"></i> ติดต่อ</a>
         </div>
     </header>
 
-    <!-- ===================== ACHIEVEMENTS ===================== -->
-    <section class="section" id="achievements" style="margin-top: 60px;">
-        <div class="section-title-center">
-            <h2>เกียรติประวัติระดับชาติ</h2>
-            <p>รวมผลงานจากเวทีแข่งขัน นวัตกรรม และรางวัลเกียรติยศ</p>
+    <!-- ======== MARQUEE ======== -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <span class="marquee-item"><i class="fas fa-microchip"></i> PLC Programming</span>
+            <span class="marquee-item"><i class="fas fa-robot"></i> KUKA / ABB</span>
+            <span class="marquee-item"><i class="fab fa-python"></i> Python & AI</span>
+            <span class="marquee-item"><i class="fas fa-eye"></i> YOLO V8/V11</span>
+            <span class="marquee-item"><i class="fas fa-project-diagram"></i> IoT & NodeRED</span>
+            <span class="marquee-item"><i class="fas fa-cube"></i> SolidWorks</span>
+            <span class="marquee-item"><i class="fas fa-print"></i> 3D Printing</span>
+            <span class="marquee-item"><i class="fas fa-fire"></i> MIG/MAG Welding Robot</span>
+            <span class="marquee-item"><i class="fas fa-cogs"></i> Automation 4.0</span>
+            <span class="marquee-item"><i class="fas fa-home"></i> Home Assistant</span>
+            <!-- duplicate for seamless loop -->
+            <span class="marquee-item"><i class="fas fa-microchip"></i> PLC Programming</span>
+            <span class="marquee-item"><i class="fas fa-robot"></i> KUKA / ABB</span>
+            <span class="marquee-item"><i class="fab fa-python"></i> Python & AI</span>
+            <span class="marquee-item"><i class="fas fa-eye"></i> YOLO V8/V11</span>
+            <span class="marquee-item"><i class="fas fa-project-diagram"></i> IoT & NodeRED</span>
+            <span class="marquee-item"><i class="fas fa-cube"></i> SolidWorks</span>
+            <span class="marquee-item"><i class="fas fa-print"></i> 3D Printing</span>
+            <span class="marquee-item"><i class="fas fa-fire"></i> MIG/MAG Welding Robot</span>
+            <span class="marquee-item"><i class="fas fa-cogs"></i> Automation 4.0</span>
+            <span class="marquee-item"><i class="fas fa-home"></i> Home Assistant</span>
         </div>
-        <div class="grid">
+    </div>
 
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/การแข่งขันควบคุมหุ่นยนต์และระบบอัตโนมัติ 4.0 ชิงถ้วยพระราชทาน ครั้งที่ 3.jpg" alt="ชิงถ้วยพระราชทาน" class="card-img" onclick="openModal(this.src)">
-                </div>
-                <div class="card-content">
-                    <div class="card-badge badge-gold"><i class="fas fa-crown"></i> ถ้วยพระราชทาน</div>
-                    <h3>การแข่งขันควบคุมหุ่นยนต์และระบบอัตโนมัติ 4.0 ชิงถ้วยพระราชทาน ครั้งที่ 3</h3>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/สิ่งประดิษฐ์ ชนะเลิศระดับชาติ ปีการศึกษา 2568.jpg" alt="สิ่งประดิษฐ์ ชนะเลิศระดับชาติ" class="card-img" onclick="openModal(this.src)">
-                </div>
-                <div class="card-content">
-                    <div class="card-badge badge-gold"><i class="fas fa-trophy"></i> ชนะเลิศ</div>
-                    <h3>สิ่งประดิษฐ์ ชนะเลิศระดับชาติ ปีการศึกษา 2568</h3>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/สิ่งประดิษฐ์ ชนะเลิศระดับภาคตะวันออกและกรุงเทพมหานคร ปีการศึกษา 2568.jpg" alt="สิ่งประดิษฐ์ ชนะเลิศระดับภาค" class="card-img" onclick="openModal(this.src)">
-                </div>
-                <div class="card-content">
-                    <div class="card-badge badge-gold"><i class="fas fa-trophy"></i> ชนะเลิศ</div>
-                    <h3>สิ่งประดิษฐ์ ชนะเลิศระดับภาคตะวันออกและกรุงเทพมหานคร ปีการศึกษา 2568</h3>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/รางวัลนวัตกรรม ระดับ 5 ดาว TVET Smart Idea2Innovation ประจำปี 2568.jpg" alt="TVET 5 ดาว" class="card-img" onclick="openModal(this.src)">
-                </div>
-                <div class="card-content">
-                    <div class="card-badge badge-gold"><i class="fas fa-star"></i> 5 ดาว</div>
-                    <h3>รางวัลนวัตกรรม ระดับ 5 ดาว TVET Smart Idea2Innovation ประจำปี 2568</h3>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/Thailand Innovation Awards ครั้งที่ 25.jpg" alt="Thailand Innovation Awards" class="card-img" onclick="openModal(this.src)">
-                </div>
-                <div class="card-content">
-                    <div class="card-badge badge-blue"><i class="fas fa-flag"></i> ระดับชาติ</div>
-                    <h3>Thailand Innovation Awards ครั้งที่ 25</h3>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/รางวัลเด็กและเยาวชนดีเด่นระดับชาติ ประจำปี 2569.jpg" alt="เด็กและเยาวชนดีเด่น" class="card-img" onclick="openModal(this.src)">
-                </div>
-                <div class="card-content">
-                    <div class="card-badge badge-blue"><i class="fas fa-gem"></i> เกียรติยศ</div>
-                    <h3>รางวัลเด็กและเยาวชนดีเด่นระดับชาติ ประจำปี 2569</h3>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/NSRU Robot & PLC ระดับอุดมศึกษาและอาชีวศึกษา.jpg" alt="NSRU Robot & PLC" class="card-img" onclick="openModal(this.src)">
-                </div>
-                <div class="card-content">
-                    <div class="card-badge badge-blue"><i class="fas fa-microchip"></i> PLC & Robot</div>
-                    <h3>NSRU Robot & PLC ระดับอุดมศึกษาและอาชีวศึกษา</h3>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/ทักษะการโปรแกรมควบคุมระบบอัตโนมัติ ปีการศึกษา 2568 ณ จังหวัดตรัง.jpg" alt="ทักษะอัตโนมัติ" class="card-img" onclick="openModal(this.src)">
-                </div>
-                <div class="card-content">
-                    <div class="card-badge badge-blue"><i class="fas fa-cogs"></i> ทักษะวิชาชีพ</div>
-                    <h3>ทักษะการโปรแกรมควบคุมระบบอัตโนมัติ ปีการศึกษา 2568 ณ จังหวัดตรัง</h3>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/ทดสอบฝีมือแรงงาน_ผู้ควบคุมระบบงานเชื่อมมิก - แม็ก ด้วยหุ่นยนต์ระดับ 1.jpg" alt="ฝีมือแรงงาน" class="card-img" onclick="openModal(this.src)">
-                </div>
-                <div class="card-content">
-                    <div class="card-badge badge-blue"><i class="fas fa-certificate"></i> การรับรอง</div>
-                    <h3>ทดสอบฝีมือแรงงาน — ผู้ควบคุมระบบงานเชื่อมมิก-แม็ก ด้วยหุ่นยนต์ ระดับ 1</h3>
-                </div>
-            </div>
-
+    <!-- ======== QUICK LINKS ======== -->
+    <section class="section" style="margin-top: 60px;">
+        <div class="section-title-center">
+            <h2>สำรวจเพิ่มเติม</h2>
+            <p>เข้าถึงทุกส่วนของ Portfolio ได้ง่ายๆ</p>
+        </div>
+        <div class="quick-links">
+            <a href="works.html" class="quick-card">
+                <div class="quick-icon"><i class="fas fa-trophy"></i></div>
+                <h3>ผลงานและรางวัล</h3>
+                <p>รวมเกียรติประวัติจากเวทีแข่งขัน<br>ระดับชาติ 9+ ผลงาน</p>
+                <span class="quick-link-arrow">ดูผลงาน <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="experience.html" class="quick-card">
+                <div class="quick-icon"><i class="fas fa-briefcase"></i></div>
+                <h3>ประสบการณ์ทำงาน</h3>
+                <p>ฝึกปฏิบัติงานจริง<br>ในสถานประกอบการ</p>
+                <span class="quick-link-arrow">ดูประสบการณ์ <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="education.html" class="quick-card">
+                <div class="quick-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>การศึกษา</h3>
+                <p>เส้นทางการศึกษาตั้งแต่<br>ประถมจนถึง ปวส.</p>
+                <span class="quick-link-arrow">ดูการศึกษา <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="contact.html" class="quick-card">
+                <div class="quick-icon"><i class="fas fa-paper-plane"></i></div>
+                <h3>ติดต่อ</h3>
+                <p>ช่องทางการติดต่อ<br>โทร, Facebook, TikTok</p>
+                <span class="quick-link-arrow">ติดต่อเลย <i class="fas fa-arrow-right"></i></span>
+            </a>
         </div>
     </section>
 
-    <!-- ===================== SKILLS ===================== -->
+    <!-- ======== SKILLS ======== -->
     <section class="section" id="skills">
         <div class="section-title-center">
             <h2>ความเชี่ยวชาญ</h2>
             <p>Expertise & Technical Skills</p>
         </div>
         <div class="skill-grid">
-
             <div class="skill-card">
-                <div class="skill-header">
-                    <div class="main-icon-box"><i class="fas fa-industry"></i></div>
-                    <h3 class="skill-title">Industrial Automation</h3>
-                </div>
-                <div class="skill-group-title">PLC Programming (IEC 61131-3)</div>
+                <div class="skill-header"><div class="main-icon-box"><i class="fas fa-industry"></i></div><h3 class="skill-title">Industrial Automation</h3></div>
+                <div class="skill-group-title">PLC Programming</div>
                 <div class="skill-tags">
-                    <span class="tag plc"><i class="fas fa-microchip"></i> Mitsubishi</span>
-                    <span class="tag plc"><i class="fas fa-microchip"></i> Siemens</span>
-                    <span class="tag plc"><i class="fas fa-microchip"></i> Omron</span>
-                    <span class="tag plc"><i class="fas fa-microchip"></i> Allen-Bradley</span>
-                    <span class="tag plc">CIMON</span>
-                    <span class="tag plc">Wecon</span>
+                    <span class="tag plc"><i class="fas fa-microchip"></i> Mitsubishi</span><span class="tag plc"><i class="fas fa-microchip"></i> Siemens</span><span class="tag plc"><i class="fas fa-microchip"></i> Omron</span><span class="tag plc"><i class="fas fa-microchip"></i> Allen-Bradley</span><span class="tag plc">CIMON</span><span class="tag plc">Wecon</span>
                 </div>
                 <div class="skill-group-title">Robotics Control</div>
                 <div class="skill-tags">
-                    <span class="tag robot"><i class="fas fa-robot"></i> KUKA</span>
-                    <span class="tag robot"><i class="fas fa-robot"></i> ABB</span>
-                    <span class="tag robot">NACHI</span>
-                    <span class="tag robot">OTC</span>
-                    <span class="tag robot">WELDEX</span>
+                    <span class="tag robot"><i class="fas fa-robot"></i> KUKA</span><span class="tag robot"><i class="fas fa-robot"></i> ABB</span><span class="tag robot">NACHI</span><span class="tag robot">OTC</span><span class="tag robot">WELDEX</span>
                 </div>
             </div>
-
             <div class="skill-card">
-                <div class="skill-header">
-                    <div class="main-icon-box"><i class="fas fa-brain"></i></div>
-                    <h3 class="skill-title">AI & Smart Tech</h3>
-                </div>
+                <div class="skill-header"><div class="main-icon-box"><i class="fas fa-brain"></i></div><h3 class="skill-title">AI & Smart Tech</h3></div>
                 <div class="skill-group-title">AI & Development</div>
                 <div class="skill-tags">
-                    <span class="tag ai"><i class="fab fa-python"></i> Python</span>
-                    <span class="tag ai"><i class="fas fa-eye"></i> Yolo V8/V11</span>
-                    <span class="tag ai">CIRA CORE</span>
-                    <span class="tag ai"><i class="fab fa-html5"></i> HTML/CSS/JS</span>
+                    <span class="tag ai"><i class="fab fa-python"></i> Python</span><span class="tag ai"><i class="fas fa-eye"></i> Yolo V8/V11</span><span class="tag ai">CIRA CORE</span><span class="tag ai"><i class="fab fa-html5"></i> HTML/CSS/JS</span>
                 </div>
                 <div class="skill-group-title">IoT Stack</div>
                 <div class="skill-tags">
-                    <span class="tag iot"><i class="fas fa-project-diagram"></i> NodeRED</span>
-                    <span class="tag iot"><i class="fas fa-home"></i> Home Assistant</span>
-                    <span class="tag iot">ESP32</span>
-                    <span class="tag iot">MQTT/Modbus</span>
-                    <span class="tag iot">Ubuntu Server</span>
-                    <span class="tag iot">Netpie</span>
+                    <span class="tag iot"><i class="fas fa-project-diagram"></i> NodeRED</span><span class="tag iot"><i class="fas fa-home"></i> Home Assistant</span><span class="tag iot">ESP32</span><span class="tag iot">MQTT/Modbus</span><span class="tag iot">Ubuntu Server</span><span class="tag iot">Netpie</span>
                 </div>
             </div>
-
             <div class="skill-card">
-                <div class="skill-header">
-                    <div class="main-icon-box"><i class="fas fa-drafting-compass"></i></div>
-                    <h3 class="skill-title">Mechanical Design</h3>
-                </div>
+                <div class="skill-header"><div class="main-icon-box"><i class="fas fa-drafting-compass"></i></div><h3 class="skill-title">Mechanical Design</h3></div>
                 <div class="skill-group-title">3D CAD Software</div>
                 <div class="skill-tags">
-                    <span class="tag cad"><i class="fas fa-cube"></i> Solidworks</span>
-                    <span class="tag cad">NX</span>
-                    <span class="tag cad">Inventor</span>
-                    <span class="tag cad">ZW3D</span>
-                    <span class="tag cad">Onshape</span>
-                    <span class="tag cad">CrownCAD</span>
+                    <span class="tag cad"><i class="fas fa-cube"></i> Solidworks</span><span class="tag cad">NX</span><span class="tag cad">Inventor</span><span class="tag cad">ZW3D</span><span class="tag cad">Onshape</span><span class="tag cad">CrownCAD</span>
                 </div>
                 <div class="skill-group-title">Maker Skills</div>
                 <div class="skill-tags">
-                    <span class="tag cad"><i class="fas fa-print"></i> 3D Printing</span>
-                    <span class="tag cad"><i class="fas fa-cog"></i> CNC Cut & Engrave</span>
-                    <span class="tag cad"><i class="fas fa-burn"></i> Laser CNC</span>
+                    <span class="tag cad"><i class="fas fa-print"></i> 3D Printing</span><span class="tag cad"><i class="fas fa-cog"></i> CNC</span><span class="tag cad"><i class="fas fa-burn"></i> Laser CNC</span>
                 </div>
             </div>
-
             <div class="skill-card">
-                <div class="skill-header">
-                    <div class="main-icon-box"><i class="fas fa-pencil-ruler"></i></div>
-                    <h3 class="skill-title">Graphics & General</h3>
-                </div>
+                <div class="skill-header"><div class="main-icon-box"><i class="fas fa-pencil-ruler"></i></div><h3 class="skill-title">Graphics & General</h3></div>
                 <div class="skill-group-title">Design & Office</div>
                 <div class="skill-tags">
-                    <span class="tag graphic"><i class="fas fa-pen-nib"></i> CorelDraw</span>
-                    <span class="tag graphic"><i class="fab fa-adobe"></i> Photoshop</span>
-                    <span class="tag graphic">Canva</span>
-                    <span class="tag graphic"><i class="far fa-file-word"></i> MS Office</span>
+                    <span class="tag graphic"><i class="fas fa-pen-nib"></i> CorelDraw</span><span class="tag graphic"><i class="fab fa-adobe"></i> Photoshop</span><span class="tag graphic">Canva</span><span class="tag graphic"><i class="far fa-file-word"></i> MS Office</span>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- ===================== FOOTER ===================== -->
     <footer>
         <p><strong>© 2025 Thanapoom Daengpradub</strong></p>
-        <p style="margin-top: 6px; font-size: 0.9rem;">Mechatronics Specialist — วิทยาลัยการอาชีพบางปะกง</p>
+        <p style="margin-top:6px; font-size: 0.9rem;">Mechatronics Specialist — วิทยาลัยการอาชีพบางปะกง</p>
         <div class="footer-links">
-            <a href="works.html">ผลงาน</a>
-            <a href="education.html">การศึกษา</a>
-            <a href="contact.html">ติดต่อ</a>
+            <a href="index.html">หน้าหลัก</a><a href="works.html">ผลงาน</a><a href="experience.html">ประสบการณ์</a><a href="education.html">การศึกษา</a><a href="docs.html">เอกสาร</a><a href="contact.html">ติดต่อ</a>
         </div>
         <p class="quote">"ความรู้และประสบการณ์ คือความสำเร็จที่แท้จริง"</p>
     </footer>
@@ -535,26 +429,52 @@
     </div>
 
     <script>
-        function openModal(src) { document.getElementById('fullImage').src = src; document.getElementById('imageModal').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeModal() { document.getElementById('imageModal').style.display = 'none'; document.body.style.overflow = ''; }
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-        window.onclick = e => { if (e.target === document.getElementById('imageModal')) closeModal(); };
+        function openModal(s){document.getElementById('fullImage').src=s;document.getElementById('imageModal').style.display='flex';document.body.style.overflow='hidden';}
+        function closeModal(){document.getElementById('imageModal').style.display='none';document.body.style.overflow='';}
+        document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-        function toggleMenu() {
-            const menu = document.getElementById("navMenu");
-            const icon = document.querySelector(".hamburger i");
-            if (menu.style.display === "flex") {
-                menu.style.display = "none";
-                icon.classList.remove("fa-times"); icon.classList.add("fa-bars");
-            } else {
-                menu.style.display = "flex"; menu.style.flexDirection = "column";
-                menu.style.position = "absolute"; menu.style.top = "64px"; menu.style.left = "0";
-                menu.style.width = "100%"; menu.style.background = "rgba(15,23,42,0.98)";
-                menu.style.padding = "24px"; menu.style.zIndex = "999";
-                menu.style.backdropFilter = "blur(20px)"; menu.style.gap = "18px"; menu.style.alignItems = "center";
-                icon.classList.remove("fa-bars"); icon.classList.add("fa-times");
-            }
+        function toggleMenu(){
+            const menu=document.getElementById('navMenu');
+            const overlay=document.getElementById('menuOverlay');
+            const icon=document.querySelector('.hamburger i');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            if(menu.classList.contains('active')){icon.classList.replace('fa-bars','fa-times');}
+            else{icon.classList.replace('fa-times','fa-bars');}
         }
+
+        // Typed text effect
+        const phrases = [
+            'R&D Engineer Intern',
+            'PLC & Robot Programmer',
+            'AI & IoT Developer',
+            'Mechatronics Specialist',
+            'National Award Winner'
+        ];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false;
+        const typedEl = document.getElementById('typedText');
+
+        function typeEffect() {
+            const current = phrases[phraseIndex];
+            if (!isDeleting) {
+                typedEl.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === current.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2000);
+                    return;
+                }
+            } else {
+                typedEl.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                }
+            }
+            setTimeout(typeEffect, isDeleting ? 40 : 80);
+        }
+        setTimeout(typeEffect, 1000);
     </script>
 </body>
 </html>
